@@ -1,0 +1,58 @@
+/* Reset for elements only */
+.el * {
+  margin: 0;
+  padding: 0;
+}
+
+.el button {
+  background-color: none;
+  border: none;
+}
+
+.el ul {
+  list-style-type: none;
+}
+
+/* Css variables */
+.el {
+  --hue: 0;
+  --saturation: 100%;
+  --lightness: 50%;
+  --theme-color: hsl(var(--hue), var(--saturation), var(--lightness));
+
+  --ff: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+
+  --border-thickness: 1px;
+  --border-style: solid;
+  --border-color: var(--themeColor);
+  --border: var(--border-thickness) var(--border-style) var(--border-color);
+
+  --border-radius: 5px;
+
+  --spacing-1: 0.25rem;
+  --spacing-2: 0.5rem;
+  --spacing-3: 0.75rem;
+  --spacing-4: 1rem;
+  --spacing-5: 1.5rem;
+  --spacing-6: 2rem;
+  --spacing-7: 2.5rem;
+  --spacing-8: 3rem;
+  --spacing-9: 4rem;
+
+  --spacing-y: var(--spacing-4);
+  --spacing-x: var(--spacing-5);
+
+  --shadow-x: 0;
+  --shadow-y: 5px;
+  --shadow-blur: 10px;
+  --shadow-offset: 0;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+
+  --shadow: var(--shadow-x) var(--shadow-y) var(--shadow-blur)
+    var(--shadow-offset) var(--shadow-color);
+}
+
+/* Default styles for element enhancer */
+.el * {
+  font-family: var(--ff);
+}
