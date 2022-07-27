@@ -13,7 +13,7 @@
         value: "tuesday",
       },
       {
-        name: "Wendsday",
+        name: "WendsdayWendsday",
         value: "wendsday",
       },
       {
@@ -37,8 +37,22 @@
 </script>
 
 <div class="content">
-  <DropdownMenu label={dropdown.label} items={dropdown.items} />
+  <select name="cars" id="cars">
+    <option value="volvo">Volvo</option>
+    <option value="saab">Saab</option>
+    <option value="mercedes">Mercedes</option>
+    <option value="audi">Audi</option>
+  </select>
+  <DropdownMenu
+    on:change={(r) => console.log(r.detail)}
+    label={dropdown.label}
+    items={dropdown.items}
+  />
 </div>
 
 <style>
+  .content {
+    display: flex;
+    gap: 1rem;
+  }
 </style>

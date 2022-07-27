@@ -15,33 +15,25 @@
 
 /* Css variables */
 .el {
-  --hue: 0;
-  --saturation: 100%;
-  --lightness: 50%;
-  --theme-color: hsl(var(--hue), var(--saturation), var(--lightness));
+  /* Colors */
+  --theme-color: #5f3dc4;
+  --theme-bg: #e5dbff;
 
+  /* Typography */
   --ff: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 
+  /* Borders */
   --border-thickness: 1px;
   --border-style: solid;
-  --border-color: var(--themeColor);
+  --border-color: var(--theme-color);
   --border: var(--border-thickness) var(--border-style) var(--border-color);
-
   --border-radius: 5px;
 
-  --spacing-1: 0.25rem;
-  --spacing-2: 0.5rem;
-  --spacing-3: 0.75rem;
-  --spacing-4: 1rem;
-  --spacing-5: 1.5rem;
-  --spacing-6: 2rem;
-  --spacing-7: 2.5rem;
-  --spacing-8: 3rem;
-  --spacing-9: 4rem;
+  /* Spacing */
+  --spacing-y: 1rem;
+  --spacing-x: 1.5rem;
 
-  --spacing-y: var(--spacing-4);
-  --spacing-x: var(--spacing-5);
-
+  /* Shadows */
   --shadow-x: 0;
   --shadow-y: 5px;
   --shadow-blur: 10px;
@@ -50,6 +42,10 @@
 
   --shadow: var(--shadow-x) var(--shadow-y) var(--shadow-blur)
     var(--shadow-offset) var(--shadow-color);
+
+  /* Animations */
+  --animation-duration: 150ms;
+  --animation-function: ease-in-out;
 }
 
 /* Default styles for element enhancer */

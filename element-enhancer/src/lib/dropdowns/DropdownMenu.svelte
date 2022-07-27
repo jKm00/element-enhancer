@@ -1,22 +1,82 @@
 <script lang="ts">
+  import { KeyCodes } from "@/util/KeyCodes";
+  import { onMount, createEventDispatcher } from "svelte";
+
   type Item = {
     name: string;
     value: string | number;
   };
 
+  const dispatch = createEventDispatcher();
+
+  // Props
   export let label: string;
   export let items: Item[];
 
+  // Stat
+  let selected: Item;
   let isOpen = false;
+  let width: number;
+  let initWidth: number;
 
+  // Update css variables on mount
+  let cssVariables: string;
+  onMount(() => {
+    initWidth = width;
+
+    // Styles
+    let styles = {
+      "init-width": `${initWidth}px`,
+    };
+
+    cssVariables = Object.entries(styles)
+      .map(([key, value]) => `--${key}:${value}`)
+      .join(";");
+  });
+
+  /**
+   * Toggles the dropdown list
+   */
   const toggleDropdown = () => {
     isOpen = !isOpen;
   };
+
+  /**
+   * Handles key event.
+   * If enter is pressed on label: toggle dropdown list.
+   * If enter is pressed on item in dropdown: handle the selection of that item
+   * @param e, the event triggered by a key press
+   * @param item, the item selected, or empty if label is selected.
+   */
+  const handleKeyEvent = (e: KeyboardEvent, item?: Item) => {
+    if (e.key === KeyCodes.ENTER) {
+      item ? handleSelect(item) : toggleDropdown();
+    }
+  };
+
+  /**
+   * Handles the selection of an item
+   * @param item the item selected
+   */
+  const handleSelect = (item: Item) => {
+    selected = item;
+    dispatch("change", selected.value);
+    toggleDropdown();
+  };
 </script>
 
-<div class="el el-dropdown">
-  <div on:click={toggleDropdown} class="el-label">
-    {label}
+<div class="el el-dropdown" bind:clientWidth={width} style={cssVariables}>
+  <div
+    on:click={toggleDropdown}
+    on:keyup={(e) => handleKeyEvent(e)}
+    class="el-label"
+    tabindex="0"
+  >
+    {#if selected}
+      {selected.name}
+    {:else}
+      {label}
+    {/if}
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 320 512"
@@ -26,17 +86,25 @@
       /></svg
     >
   </div>
-  <ul class="el-list">
+  <ul class="el-list" data-open={isOpen}>
     {#each items as item, index}
-      <li class="el-item">{item.name}</li>
+      <li
+        on:click={() => handleSelect(item)}
+        on:keyup={(e) => handleKeyEvent(e, item)}
+        class="el-item"
+        tabindex="0"
+      >
+        {item.name}
+      </li>
     {/each}
   </ul>
 </div>
 
 <style>
   .el-dropdown {
-    --animation-duration: 150ms;
     position: relative;
+    color: var(--theme-color);
+    min-width: var(--init-width);
   }
 
   .el-label {
@@ -44,23 +112,44 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 0.5rem;
     border: var(--border);
     border-radius: var(--border-radius);
     padding-block: var(--spacing-y);
     padding-inline: var(--spacing-x);
+    background-color: var(--theme-bg);
+
+    position: relative;
+
+    transition: background-color var(--animation-duration)
+        var(--animation-function),
+      color var(--animation-duration) var(--animation-function);
+  }
+
+  .el-label:hover,
+  .el-label:focus-visible {
     background-color: var(--theme-color);
+    color: var(--theme-bg);
   }
 
   .el-label svg {
     width: 0.5rem;
-    transition: transform var(--animation-duration) ease-in-out;
+    fill: var(--theme-color);
+    transition: transform var(--animation-duration) var(--animation-function),
+      fill var(--animation-duration) var(--animation-function);
   }
 
   .el-label svg[data-open="true"] {
     transform: rotate(90deg);
   }
 
+  .el-label:hover svg,
+  .el-label:focus-visible svg {
+    fill: var(--theme-bg);
+  }
+
   .el-list {
+    display: none;
     /* TODO: Maybe have one more look at this */
     box-shadow: var(--shadow-x) var(--shadow-y) var(--shadow-blur)
       var(--shadow-offset) var(--shadow-color);
@@ -68,10 +157,20 @@
     left: 0.5rem;
     right: 0.5rem;
     padding-block: var(--spacing-2);
+    min-width: fit-content;
+  }
+
+  .el-list[data-open="true"] {
+    display: block;
   }
 
   .el-item {
     padding-inline: var(--spacing-x);
     padding-block: var(--spacing-y);
+  }
+
+  .el-item:hover,
+  .el-item:focus {
+    background-color: var(--theme-bg);
   }
 </style>
