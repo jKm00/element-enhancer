@@ -70,10 +70,6 @@ body {
 	font-family: var(--ff-primary);
 	color: var(--clr-text);
 	background-color: var(--clr-bg);
-
-	transition: background-color var(--animation-duration)
-			var(--animation-function),
-		color var(--animation-duration) var(--animation-function);
 }
 
 a {
@@ -140,4 +136,18 @@ body[data-theme='light'] {
 	--clr-card-bg: var(--clr-card-bg-light);
 
 	--clr-gradient-bg: var(--clr-gradient-bg-light);
+}
+
+/* Theme toggle animation */
+
+body {
+	transition: background-color var(--animation-duration)
+			var(--animation-function),
+		color var(--animation-duration) var(--animation-function);
+}
+
+.card {
+	transition: background-color var(--animation-duration)
+			var(--animation-function),
+		color var(--animation-duration) var(--animation-function);
 }
