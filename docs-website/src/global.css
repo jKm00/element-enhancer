@@ -70,6 +70,10 @@ body {
 	font-family: var(--ff-primary);
 	color: var(--clr-text);
 	background-color: var(--clr-bg);
+
+	transition: background-color var(--animation-duration)
+			var(--animation-function),
+		color var(--animation-duration) var(--animation-function);
 }
 
 a {
