@@ -154,8 +154,6 @@
     box-shadow: var(--shadow-x) var(--shadow-y) var(--shadow-blur)
       var(--shadow-offset) var(--shadow-color);
     position: absolute;
-    left: 0.5rem;
-    right: 0.5rem;
     padding-block: var(--spacing-2);
     min-width: fit-content;
   }
