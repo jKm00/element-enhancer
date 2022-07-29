@@ -19,6 +19,8 @@
   let width: number;
   let initWidth: number;
 
+  // TODO: This method of setting initial width is not ideal. Should rather let the user
+  // decide a min and max width
   // Update css variables on mount
   let cssVariables: string;
   onMount(() => {
