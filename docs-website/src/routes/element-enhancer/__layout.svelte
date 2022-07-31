@@ -65,7 +65,10 @@
     {/each}
   </ul>
 </nav>
-<slot></slot>
+
+<main class="main">
+  <slot></slot>
+</main>
 
 <style>
   .header {
@@ -74,6 +77,7 @@
     align-items: center;
     padding: 0.5rem 1rem;
     position: fixed;
+    top:0;
     left:0;
     right:0;
     background-color: var(--clr-card-bg);
@@ -92,7 +96,7 @@
   }
 
   .search__input {
-    padding: 0.5rem;
+    padding: 0.5rem 1rem;
     border-radius: var(--border-radius) 0 0 var(--border-radius);
     border: 1px solid var(--clr-theme);
   }
@@ -101,13 +105,35 @@
     background-color: var(--clr-theme);
     padding-left: 0.75rem;
     padding-right: 1rem;
+    border: 1px solid var(--clr-theme);
+    border-left: none;
     border-radius: 0 var(--border-radius) var(--border-radius) 0;
+
+    transition: background-color var(--animation-duration) var(--animation-function);
   }
 
   .search__button svg {
     fill:#fff;
+
+    transition: fill var(--animation-duration) var(--animation-function);
+  }
+
+  .search__button:hover {
+    background-color: var(--clr-text);
+  }
+
+  .search__button:active {
+    opacity: 0.9;
   }
   
+  .search__button:hover svg {
+    fill: var(--clr-bg);
+  }
+  
+  /* Redo so nav is sticky. Think wrapping both nav
+    and main content in a wrapper and then display flex
+    should work
+  */
   .nav {
     position: fixed;
     top:67px; /* TODO: Calculate this on load */
@@ -117,5 +143,12 @@
     background-color: var(--clr-card-bg);
     padding: 1rem;
     box-shadow: 1px 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .main {
+    min-height: 100vh;
+    max-width: 100ch;
+    margin:auto;
+    margin-block: 7rem;
   }
 </style>

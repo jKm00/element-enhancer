@@ -1,3 +1,5 @@
+<!-- TODO: Need to save settings, currently when page
+is refreshed, it goes back to dark mode -->
 <script lang="ts">
 	import { onMount } from 'svelte';
 
