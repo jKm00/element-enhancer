@@ -1,3 +1,7 @@
+<script lang="ts">
+	import ThemeToggle from "@/components/ThemeToggle.svelte";
+</script>
+
 <div class="wrapper">
 	<div class="content">
 		<nav class="card">
@@ -42,6 +46,9 @@
 			href="https://codepen.io/SimonEvans/pen/bgVxMO?editors=1100"
 			target="_blank">Simon Evans</a>
 	</p>
+	<div class="theme-toggle-wrapper">
+		<ThemeToggle />
+	</div>
 </div>
 
 <style>
@@ -133,6 +140,12 @@
 		right: 1rem;
 		opacity: 0.7;
 		transform: scale(0.8);
+	}
+
+	.theme-toggle-wrapper {
+		position: absolute;
+		top: 1rem;
+		right: 1rem;
 	}
 
 	@keyframes animateGlow {

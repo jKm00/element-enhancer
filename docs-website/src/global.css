@@ -31,6 +31,8 @@ img {
 :root {
 	/* Default colors */
 	--clr-theme: #7e63cf;
+	--clr-theme-500: #6e4fc9;
+	--clr-theme-600: #5e3cc3;
 
 	--clr-text: var(--clr-text-dark);
 	--clr-bg: var(--clr-bg-dark);
@@ -40,17 +42,29 @@ img {
 	--clr-gradient-end: #1fd1f9;
 	--clr-gradient-bg: var(--clr-gradient-bg-dark);
 
+	--clr-scroll-bg: var(--clr-scroll-bg-dark);
+	--clr-scroll-thumb: var(--clr-scroll-thumb-dark);
+	--clr-scroll-thumb-hover: var(--clr-scroll-thumb-hover-dark);
+
 	/* Dark theme colors */
 	--clr-text-dark: #fff;
 	--clr-bg-dark: #1a1a1a;
 	--clr-card-bg-dark: #262626;
 	--clr-gradient-bg-dark: rgba(26, 26, 26, 0.8);
 
+	--clr-scroll-bg-dark: #0d0d0d;
+	--clr-scroll-thumb-dark: #b3b3b3;
+	--clr-scroll-thumb-hover-dark: #808080;
+
 	/* Light theme colors */
 	--clr-text-light: #262626;
 	--clr-bg-light: #e6e6e6;
 	--clr-card-bg-light: #f2f2f2;
 	--clr-gradient-bg-light: #f2f2f2;
+
+	--clr-scroll-bg-light: #fff;
+	--clr-scroll-thumb-light: #958c8c;
+	--clr-scroll-thumb-hover-light: #666666;
 
 	/* Fonts */
 	--ff-primary: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -90,6 +104,32 @@ svg {
 	color: var(--clr-text);
 	text-decoration: none;
 	font-weight: bold;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+	width: 15px;
+	height: 15px;
+}
+::-webkit-scrollbar-button {
+	width: 29px;
+	height: 29px;
+}
+::-webkit-scrollbar-thumb {
+	background: var(--clr-scroll-thumb);
+	border: 4px solid var(--clr-scroll-bg);
+	border-radius: 17px;
+}
+::-webkit-scrollbar-thumb:hover {
+	background: var(--clr-scroll-thumb-hover);
+}
+::-webkit-scrollbar-track {
+	background: var(--clr-scroll-bg);
+	border: 0px none #ffffff;
+	border-radius: 0px;
+}
+::-webkit-scrollbar-corner {
+	background: transparent;
 }
 
 /* Utility */
@@ -147,4 +187,8 @@ body[data-theme='light'] {
 	--clr-card-bg: var(--clr-card-bg-light);
 
 	--clr-gradient-bg: var(--clr-gradient-bg-light);
+
+	--clr-scroll-bg: var(--clr-scroll-bg-light);
+	--clr-scroll-thumb: var(--clr-scroll-thumb-light);
+	--clr-scroll-thumb-hover: var(--clr-scroll-thumb-hover-light);
 }
