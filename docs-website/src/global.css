@@ -85,6 +85,13 @@ svg {
 	fill: var(--clr-text);
 }
 
+.logo {
+	text-transform: uppercase;
+	color: var(--clr-text);
+	text-decoration: none;
+	font-weight: bold;
+}
+
 /* Utility */
 .title {
 	font-weight: bold;
