@@ -1,15 +1,16 @@
-<!-- TODO: Need to save settings, currently when page
-is refreshed, it goes back to dark mode -->
 <script lang="ts">
 	import { onMount } from 'svelte';
-
-	let lightMode = false;
-
+	import theme from '@/stores/theme'
+	
 	let body: HTMLElement | null;
-
+	
 	onMount(() => {
 		body = document.querySelector('body');
 	});
+
+	$: lightMode = $theme === 'light';
+	
+	$: lightMode ? theme.set('light') : theme.set('dark');
 
 	$: body?.setAttribute('data-theme', lightMode ? 'light' : 'dark');
 </script>
