@@ -37,6 +37,25 @@
     color: var(--clr-text);
     text-decoration: none;
     padding: 1rem 0.5rem;
+    position: relative;
+  }
+
+  .item__link::after {
+    content:'';
+    position: absolute;
+    left:0.5rem;
+    right:0.5rem;
+    bottom: 0;
+    height: 1px;
+    background-color: var(--clr-text);
+    transform: scaleX(0);
+
+    transition: transform var(--animation-duration) var(--animation-function);
+  }
+
+  .item__link:hover::after,
+  .item__link:focus-visible::after {
+    transform: scaleX(1);
   }
 
   .item__link svg {

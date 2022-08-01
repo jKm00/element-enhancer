@@ -50,6 +50,7 @@
   }
 </script>
 
+<!-- Header -->
 <header class="header">
   <a href="/" class="logo">Element Enhancer</a>
   <form class="search" on:submit|preventDefault={handleSearch}>
@@ -58,17 +59,21 @@
   </form>
   <ThemeToggle />
 </header>
-<nav class="nav">
-  <ul class="list">
-    {#each navItems as navItem}
-      <NavItem item={navItem} />
-    {/each}
-  </ul>
-</nav>
-
-<main class="main">
-  <slot></slot>
-</main>
+<!-- Main co"mponentes -->
+<div class="page">
+  <!-- Nav side bar -->
+  <nav class="nav">
+    <ul class="list">
+      {#each navItems as navItem}
+        <NavItem item={navItem} />
+      {/each}
+    </ul>
+  </nav>
+  <!-- Main docs -->
+  <main class="main">
+    <slot></slot>
+  </main>
+</div>
 
 <style>
   .header {
@@ -129,26 +134,31 @@
   .search__button:hover svg {
     fill: var(--clr-bg);
   }
-  
-  /* Redo so nav is sticky. Think wrapping both nav
-    and main content in a wrapper and then display flex
-    should work
-  */
+
+  /* Page wrapper */
+  .page {
+    margin-top: 67px;
+    display: grid;
+    grid-template-columns: 15rem 1fr;
+  }
+
+  /* Side bar */
   .nav {
-    position: fixed;
+    display: block;
+    position: sticky;
     top:67px; /* TODO: Calculate this on load */
-    bottom:0;
-    left:0;
+    height: calc(100vh - 67px);
     overflow-y: auto;
     background-color: var(--clr-card-bg);
     padding: 1rem;
     box-shadow: 1px 0 10px rgba(0, 0, 0, 0.1);
   }
 
+  /* Main content */
   .main {
-    min-height: 100vh;
+    min-height: 200vh;
     max-width: 100ch;
-    margin:auto;
-    margin-block: 7rem;
+    margin: 5rem auto;
+    padding: 0 2rem;
   }
 </style>
