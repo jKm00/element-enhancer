@@ -1,6 +1,7 @@
 <script lang="ts">
   import { KeyCodes } from "@/util/KeyCodes";
-  import { onMount, createEventDispatcher } from "svelte";
+  import { createEventDispatcher } from "svelte";
+  import type { StyleOptions } from '@/util/types/StyleOptions'
 
   type Item = {
     name: string;
@@ -13,28 +14,17 @@
   export let label: string;
   export let items: Item[];
 
-  // Stat
+  // State
   let selected: Item;
   let isOpen = false;
-  let width: number;
-  let initWidth: number;
 
-  // TODO: This method of setting initial width is not ideal. Should rather let the user
-  // decide a min and max width
-  // Update css variables on mount
-  let cssVariables: string;
-  onMount(() => {
-    initWidth = width;
+  // Custom styles
+  export let styleOptions: StyleOptions
 
-    // Styles
-    let styles = {
-      "init-width": `${initWidth}px`,
-    };
+  $: cssVariables = styleOptions ? Object.entries(styleOptions).map(([key, value]) => `--${key}:${value}`)
+  .join(';') : null;
 
-    cssVariables = Object.entries(styles)
-      .map(([key, value]) => `--${key}:${value}`)
-      .join(";");
-  });
+  $: console.log(cssVariables)
 
   /**
    * Toggles the dropdown list
@@ -67,7 +57,7 @@
   };
 </script>
 
-<div class="el el-dropdown" bind:clientWidth={width} style={cssVariables}>
+<div class="el el-dropdown" style={cssVariables}>
   <div
     on:click={toggleDropdown}
     on:keyup={(e) => handleKeyEvent(e)}
@@ -89,6 +79,8 @@
     >
   </div>
   <ul class="el-list" data-open={isOpen}>
+    <!-- TODO: Make a visual representation of the selected item
+    also in the list (not just label) -->
     {#each items as item, index}
       <li
         on:click={() => handleSelect(item)}
@@ -102,11 +94,16 @@
   </ul>
 </div>
 
+<!-- TODO: Refactore how custom styles work -->
 <style>
   .el-dropdown {
+    --textColor: var(--theme-color);
+    --bgColor: var(--theme-bg);
+
     position: relative;
-    color: var(--theme-color);
-    min-width: var(--init-width);
+    color: var(--textColor);
+    min-width: var(--minWidth);
+    max-width: var(--maxWidth);
   }
 
   .el-label {
@@ -119,7 +116,7 @@
     border-radius: var(--border-radius);
     padding-block: var(--spacing-y);
     padding-inline: var(--spacing-x);
-    background-color: var(--theme-bg);
+    background-color: var(--bgColor);
 
     position: relative;
 
@@ -130,13 +127,13 @@
 
   .el-label:hover,
   .el-label:focus-visible {
-    background-color: var(--theme-color);
-    color: var(--theme-bg);
+    background-color: var(--textColor);
+    color: var(--bgColor);
   }
 
   .el-label svg {
     width: 0.5rem;
-    fill: var(--theme-color);
+    fill: var(--textColor);
     transition: transform var(--animation-duration) var(--animation-function),
       fill var(--animation-duration) var(--animation-function);
   }
@@ -147,7 +144,7 @@
 
   .el-label:hover svg,
   .el-label:focus-visible svg {
-    fill: var(--theme-bg);
+    fill: var(--bgColor);
   }
 
   .el-list {
@@ -156,6 +153,8 @@
     box-shadow: var(--shadow-x) var(--shadow-y) var(--shadow-blur)
       var(--shadow-offset) var(--shadow-color);
     position: absolute;
+    left:0;
+    right: 0;
     padding-block: var(--spacing-2);
     min-width: fit-content;
   }
@@ -171,6 +170,6 @@
 
   .el-item:hover,
   .el-item:focus {
-    background-color: var(--theme-bg);
+    background-color: var(--bgColor);
   }
 </style>

@@ -47,6 +47,7 @@
     on:change={(r) => console.log(r.detail)}
     label={dropdown.label}
     items={dropdown.items}
+    styleOptions={{}}
   />
 </div>
 

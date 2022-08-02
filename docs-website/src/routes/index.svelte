@@ -1,25 +1,21 @@
 <script lang="ts">
 	import ThemeToggle from "@/components/ThemeToggle.svelte";
+	import { scale, fade } from 'svelte/transition'
 </script>
 
 <div class="wrapper">
 	<div class="content">
 		<nav class="card">
 			<ul class="list">
-				<li><a class="list__link" href="">Docs</a></li>
+				<li><a class="list__link" href="/element-enhancer/getting-started">Docs</a></li>
 				<li><a class="list__link" href="">Resources</a></li>
 				<li><a class="list__link" href="">Package</a></li>
 				<li><a class="list__link" href="/license">License</a></li>
 			</ul>
 		</nav>
 		<div class="title--wrapper">
-			<h1 class="title">Element enhancer</h1>
+			<h1 class="title" in:scale out:fade >Element enhancer</h1>
 		</div>
-		<img
-			src="/images/tmp-landing-page-img.png"
-			alt="Example"
-			class="box-shadow"
-		/>
 		<a href="/element-enhancer/getting-started" class="cta">
 			Getting started 
 			<svg
@@ -136,8 +132,8 @@
 
 	.creds {
 		position: absolute;
-		bottom: 1rem;
-		right: 1rem;
+		top: 1rem;
+		left: 0rem;
 		opacity: 0.7;
 		transform: scale(0.8);
 	}

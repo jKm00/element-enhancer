@@ -4,44 +4,38 @@
 
   const navItems = [
     {
-    label: 'Getting Started',
-    link: '/element-enhancer/getting-started',
-    subItems: [
-      {
-        label: 'Windowns',
-        link: '/element-enhancer/getting-started/windows'
-      },
-      {
-        label: 'Mac',
-        link: '/element-enhancer/getting-started/mac',
-        subItems: [
-          {
-            label: 'MacBook Air',
-            link: '/elemet-enhancer/getting-started/mac/air'
-          },
-          {
-            label: 'MacBook Pro',
-            link: '/element-enhancer/getting-started/mac/pro'
-          }
-        ]
-      },
-      {
-        label: 'Linux',
-        link: '/element-enhancer/getting-started/linux'
-      }
-    ]
-  },
-  {
-    label: 'Elements',
-    link: '/element-enhancer/elements',
-    subItems: [
-      {
-        label: 'Dropdown',
-        link: '/element-enhancer/elements/dropdown'
-      }
-    ]
-  }
-]
+      label: 'Getting Started',
+      link: '/element-enhancer/getting-started'
+    },
+    {
+      label: 'Styling',
+      link: '/element-enhancer/custom-styling',
+      subItems: [
+        {
+          label: 'Custom styling',
+          link: '/element-enhancer/custom-styling'
+        },
+        {
+          label: 'Global styles',
+          link: '/element-enhancer/custom-styling#global-styles'
+        },
+        {
+          label: 'Component styling',
+          link: '/element-enhancer/custom-styling#component-styles'
+        }
+      ]
+    },
+    {
+      label: 'Elements',
+      link: '/element-enhancer/elements',
+      subItems: [
+        {
+          label: 'Dropdown',
+          link: '/element-enhancer/elements/dropdown'
+        }
+      ]
+    }
+  ]
 
   let search: string
 

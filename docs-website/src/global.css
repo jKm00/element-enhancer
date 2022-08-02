@@ -80,6 +80,10 @@ img {
 }
 
 /* Global elements */
+html {
+	scroll-behavior: smooth;
+}
+
 body {
 	font-family: var(--ff-primary);
 	color: var(--clr-text);
@@ -99,11 +103,40 @@ svg {
 	fill: var(--clr-text);
 }
 
+.title--main {
+	font-size: 2.5rem;
+}
+
+.title--secondary {
+	font-size: 2rem;
+}
+
+.text {
+	line-height: 2.5rem;
+}
+
+.inline-list {
+	list-style-type: disc;
+	margin-left: 1rem;
+}
+
+.inline-list li:not(:last-child) {
+	margin-bottom: 1rem;
+}
+
 .logo {
 	text-transform: uppercase;
 	color: var(--clr-text);
 	text-decoration: none;
 	font-weight: bold;
+}
+
+.section:not(:first-child) {
+	padding-top: 6rem;
+}
+
+.section > *:not(:last-child) {
+	margin-bottom: 2rem;
 }
 
 /* Scrollbar */
