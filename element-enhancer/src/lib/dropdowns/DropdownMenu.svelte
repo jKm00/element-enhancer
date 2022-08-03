@@ -5,7 +5,7 @@
 
   type Item = {
     name: string;
-    value: string | number;
+    value: string;
   };
 
   const dispatch = createEventDispatcher();
@@ -13,18 +13,34 @@
   // Props
   export let label: string;
   export let items: Item[];
+  // Custom styles
+  export let styleOptions: StyleOptions = undefined
+
+  $: cssVariables = styleOptions ? 
+  Object.entries(styleOptions)
+    .map(([key, value]) => `--${key}:${value}`)
+    .join(';') 
+  : null;
 
   // State
   let selected: Item;
   let isOpen = false;
 
-  // Custom styles
-  export let styleOptions: StyleOptions
+  /**
+   * Dispatches the selected item whenever it changes
+  */
+  $: dispatch('change', selected?.value)
 
-  $: cssVariables = styleOptions ? Object.entries(styleOptions).map(([key, value]) => `--${key}:${value}`)
-  .join(';') : null;
-
-  $: console.log(cssVariables)
+  /**
+   * Checks if an item is selected.
+   * Returns true if it is and false if not
+   * @param item, the item to check wether or not is selected
+   */
+  $: isChecked = (item: Item) => {
+    if (selected) {
+      return selected.value === item.value
+    }
+  }
 
   /**
    * Toggles the dropdown list
@@ -37,14 +53,24 @@
    * Handles key event.
    * If enter is pressed on label: toggle dropdown list.
    * If enter is pressed on item in dropdown: handle the selection of that item
+   * If escape is pressed: dropdown is closed
    * @param e, the event triggered by a key press
    * @param item, the item selected, or empty if label is selected.
    */
   const handleKeyEvent = (e: KeyboardEvent, item?: Item) => {
     if (e.key === KeyCodes.ENTER) {
       item ? handleSelect(item) : toggleDropdown();
+    } else if (e.key === KeyCodes.ESC) {
+      closeDropdown();
     }
   };
+
+  /**
+   * Closes the dropdown menu
+   */
+  const closeDropdown = () => {
+    isOpen = false;
+  }
 
   /**
    * Handles the selection of an item
@@ -52,7 +78,6 @@
    */
   const handleSelect = (item: Item) => {
     selected = item;
-    dispatch("change", selected.value);
     toggleDropdown();
   };
 </script>
@@ -81,12 +106,13 @@
   <ul class="el-list" data-open={isOpen}>
     <!-- TODO: Make a visual representation of the selected item
     also in the list (not just label) -->
-    {#each items as item, index}
+    {#each items as item, index (index)}
       <li
         on:click={() => handleSelect(item)}
         on:keyup={(e) => handleKeyEvent(e, item)}
         class="el-item"
         tabindex="0"
+        data-checked={isChecked(item)}
       >
         {item.name}
       </li>
@@ -94,68 +120,79 @@
   </ul>
 </div>
 
-<!-- TODO: Refactore how custom styles work -->
 <style>
   .el-dropdown {
-    --textColor: var(--theme-color);
-    --bgColor: var(--theme-bg);
-
-    position: relative;
     color: var(--textColor);
     min-width: var(--minWidth);
     max-width: var(--maxWidth);
+
+    position: relative;
   }
 
   .el-label {
-    --lightness: 10%;
+    border: var(--borderThickness) var(--borderStyle) var(--borderColor);
+    border-radius: var(--borderRadius);
+    padding-block: var(--spacingY);
+    padding-inline: var(--spacingX);
+    background-color: var(--bgColor);
+    
+    transition: background-color var(--animationDuration)
+        var(--animationFunction),
+      color var(--animationDuration) var(--animationFunction);
+
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 0.5rem;
-    border: var(--border);
-    border-radius: var(--border-radius);
-    padding-block: var(--spacing-y);
-    padding-inline: var(--spacing-x);
-    background-color: var(--bgColor);
 
     position: relative;
-
-    transition: background-color var(--animation-duration)
-        var(--animation-function),
-      color var(--animation-duration) var(--animation-function);
   }
 
-  .el-label:hover,
+  .el-label:hover {
+    background-color: var(--bgColorHover);
+    color: var(--textColorHover);
+    border-color: var(--borderColorHover);
+  }
+
   .el-label:focus-visible {
-    background-color: var(--textColor);
-    color: var(--bgColor);
+    background-color: var(--bgColorFocus);
+    color: var(--textColorFocus);
+    border-color: var(--borderColorFocus);
   }
 
   .el-label svg {
-    width: 0.5rem;
     fill: var(--textColor);
-    transition: transform var(--animation-duration) var(--animation-function),
-      fill var(--animation-duration) var(--animation-function);
+    transition: transform var(--animationDuration) var(--animationFunction),
+    fill var(--animationDuration) var(--animationFunction);
   }
 
   .el-label svg[data-open="true"] {
     transform: rotate(90deg);
   }
 
-  .el-label:hover svg,
+  .el-label:hover svg {
+    fill: var(--textColorHover);
+  }
+
   .el-label:focus-visible svg {
-    fill: var(--bgColor);
+    fill: var(--textColorFocus);
   }
 
   .el-list {
+    box-shadow: 
+      var(--shadowX) 
+      var(--shadowY) 
+      var(--shadowBlur)
+      var(--shadowOffset) 
+      var(--shadowColor);
+    background-color: var(--neutralColor);
+    padding-block: var(--spacingY);
+    
     display: none;
-    /* TODO: Maybe have one more look at this */
-    box-shadow: var(--shadow-x) var(--shadow-y) var(--shadow-blur)
-      var(--shadow-offset) var(--shadow-color);
     position: absolute;
     left:0;
     right: 0;
-    padding-block: var(--spacing-2);
+    z-index: 99999;
     min-width: fit-content;
   }
 
@@ -164,12 +201,26 @@
   }
 
   .el-item {
-    padding-inline: var(--spacing-x);
-    padding-block: var(--spacing-y);
+    padding-inline: var(--spacingX);
+    padding-block: var(--spacingY);
+
+    transition:
+      background-color var(--animationDuration) var(--animationFunction),
+      color var(--animationDuration) var(--animationFunction);
   }
 
-  .el-item:hover,
+  .el-item:hover {
+    background-color: var(--bgColorHover);
+    color: var(--textColorHover);
+  }
+
   .el-item:focus {
-    background-color: var(--bgColor);
+    background-color: var(--bgColorFocus);
+    color: var(--textColorFocus)
+  }
+
+  .el-item[data-checked="true"] {
+    background-color: var(--bgColorSelected);
+    color: var(--textColorSelected);
   }
 </style>
