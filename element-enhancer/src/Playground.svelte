@@ -1,6 +1,7 @@
 <script lang="ts">
   import DropdownMenu from "@/lib/dropdowns/DropdownMenu.svelte";
   import MultiDropdownMenu from "@/lib/dropdowns/MultiDropdownMenu.svelte";
+  import '@/test.css'
 
   const dropdown = {
     label: "My dropdown",
