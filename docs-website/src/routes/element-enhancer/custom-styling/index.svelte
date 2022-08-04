@@ -1,13 +1,14 @@
 <script lang="ts">
   import InlineCodeBlock from "@/components/InlineCodeBlock.svelte";
   import CodeFile from "@/components/CodeFile.svelte";
+import ColorShowcase from "@/components/ColorShowcase.svelte";
 </script>
 
 <section class="section">
   <h1 class="title title--main">Custom styling</h1>
   <p class="text">
     By default, element enhancer comes with a pre-defined theme that are represented throughout all of the elements. 
-    Normally this does not fit the theme of your website, so you can customize it howere you want. 
+    Normally this does not fit the theme of your website, so you can customize it however you want. 
     There are two ways to customize:
   </p>
   <ul class="inline-list">
@@ -47,8 +48,8 @@
     Just make sure its imported after the default element-enhancer stylesheet!
   </p>
   <p class="text">
-    Here is the list of all custom theme variables. These are the variables 
-    that can be overwritten in a custom stylesheet:
+    All you need to do now is to fill your stylesheet with all the variables you 
+    want to change. For reference, heres a list of all the variables:
   </p>
   <table>
     <tr>
@@ -73,7 +74,7 @@
         Defines the color of all text elements
       </td>
       <td>
-        #5f3dc5 <span class="color-showcase" style="--bgColor: #5f3dc5"></span>
+        #5f3dc5 <ColorShowcase color={'#5f3dc5'} />
       </td>
       <td>
         <InlineCodeBlock>
@@ -86,10 +87,4 @@
 <section class="section" id="component-styles"></section>
 
 <style>
-  .color-showcase {
-    display: inline-block;
-    height: 1rem;
-    aspect-ratio: 1 / 1;
-    background-color: var(--bgColor);
-  }
 </style>

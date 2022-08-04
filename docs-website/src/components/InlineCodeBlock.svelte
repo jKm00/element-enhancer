@@ -1,3 +1,4 @@
+<!-- Represents an inline code block -->
 <code class="code">
   <slot></slot>
 </code>

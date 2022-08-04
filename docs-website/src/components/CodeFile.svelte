@@ -1,3 +1,8 @@
+<!-- 
+  Used to display a file with the code inside that file.
+  The path of the file should be passed in as a prop,
+  the content of a file should go between the tags
+-->
 <script lang="ts">
   export let path: string;
 </script>
