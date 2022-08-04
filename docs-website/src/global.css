@@ -37,6 +37,7 @@ img {
 	--clr-text: var(--clr-text-dark);
 	--clr-bg: var(--clr-bg-dark);
 	--clr-card-bg: var(--clr-card-bg-dark);
+	--clr-inline-code-bg: var(--clr-inline-code-bg-dark);
 
 	--clr-gradient-start: #b621fe;
 	--clr-gradient-end: #1fd1f9;
@@ -50,6 +51,7 @@ img {
 	--clr-text-dark: #fff;
 	--clr-bg-dark: #1a1a1a;
 	--clr-card-bg-dark: #262626;
+	--clr-inline-code-bg-dark: #404040;
 	--clr-gradient-bg-dark: rgba(26, 26, 26, 0.8);
 
 	--clr-scroll-bg-dark: #0d0d0d;
@@ -60,6 +62,7 @@ img {
 	--clr-text-light: #262626;
 	--clr-bg-light: #e6e6e6;
 	--clr-card-bg-light: #f2f2f2;
+	--clr-inline-code-bg-light: #fff;
 	--clr-gradient-bg-light: #f2f2f2;
 
 	--clr-scroll-bg-light: #fff;
@@ -218,6 +221,7 @@ body[data-theme='light'] {
 	--clr-text: var(--clr-text-light);
 	--clr-bg: var(--clr-bg-light);
 	--clr-card-bg: var(--clr-card-bg-light);
+	--clr-inline-code-bg: var(--clr-inline-code-bg-light);
 
 	--clr-gradient-bg: var(--clr-gradient-bg-light);
 

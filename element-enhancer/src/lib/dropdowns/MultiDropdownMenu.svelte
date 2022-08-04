@@ -112,7 +112,7 @@
         <label
           on:keyup={(e) => handleKeyEvent(e, item)}
         >
-          <input type="checkbox" bind:group={checked} name="items" value={item} />
+          <input type="checkbox" bind:group={checked} name={label} value={item} />
           {item.name}
         </label>
       </li>
