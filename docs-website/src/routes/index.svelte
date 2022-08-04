@@ -1,10 +1,10 @@
 <script lang="ts">
 	import ThemeToggle from "@/components/ThemeToggle.svelte";
-	import { scale, fade } from 'svelte/transition'
+	import { scale, fade, fly } from 'svelte/transition'
 </script>
 
 <div class="wrapper">
-	<div class="content">
+	<div class="content" in:fly="{{ y: 25, duration: 1000 }}">
 		<nav class="card">
 			<ul class="list">
 				<li><a class="list__link" href="/element-enhancer/getting-started">Docs</a></li>
@@ -14,7 +14,7 @@
 			</ul>
 		</nav>
 		<div class="title--wrapper">
-			<h1 class="title" in:scale out:fade >Element enhancer</h1>
+			<h1 class="title">Element enhancer</h1>
 		</div>
 		<a href="/element-enhancer/getting-started" class="cta">
 			Getting started 
