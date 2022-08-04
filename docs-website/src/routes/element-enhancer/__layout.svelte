@@ -79,6 +79,7 @@
     top:0;
     left:0;
     right:0;
+    z-index: 10;
     background-color: var(--clr-card-bg);
     box-shadow: var(--box-shadow);
   }
@@ -140,12 +141,13 @@
   .nav {
     display: block;
     position: sticky;
+    z-index: 20;
     top:67px; /* TODO: Calculate this on load */
     height: calc(100vh - 67px);
     overflow-y: auto;
     background-color: var(--clr-card-bg);
     padding: 1rem;
-    box-shadow: 1px 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 1px 10px 10px rgba(0, 0, 0, 0.1);
   }
 
   /* Main content */
