@@ -2,6 +2,9 @@
   import { KeyCodes } from '@/util/KeyCodes';
   import type { StyleOptions } from '@/util/types/StyleOptions';
   import { createEventDispatcher } from 'svelte';
+  import { truncateString } from '@/util/stringUtil';
+
+  const TRUNC_LENGTH = 15;
 
   const dispatch = createEventDispatcher();
 
@@ -36,6 +39,10 @@
    * Is true when there are, and false if not
    */
   $: anyCheckedItems = checked.length > 0
+
+  $: checkedItemsDisplay = truncateString(
+    checked.map(i => i.name).join(', '),
+    TRUNC_LENGTH)
 
   /**
    * Checks if an item is checked. Return true
@@ -97,7 +104,7 @@
     on:keyup={e => handleKeyEvent(e)}
   >
     {#if anyCheckedItems}
-      {checked.map(i => i.name).join(', ')}
+      {checkedItemsDisplay}
     {:else}
       {label}
     {/if}

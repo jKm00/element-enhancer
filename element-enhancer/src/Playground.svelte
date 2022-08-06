@@ -1,6 +1,8 @@
 <script lang="ts">
   import DropdownMenu from "@/lib/dropdowns/DropdownMenu.svelte";
   import MultiDropdownMenu from "@/lib/dropdowns/MultiDropdownMenu.svelte";
+  import Button from '@/lib/buttons/Button.svelte'
+  import ButtonRow from "@/lib/buttons/ButtonRow.svelte";
   import '@/test.css'
 
   const dropdown = {
@@ -57,7 +59,7 @@
         value: 'grape'
       }
     ]
-  }
+  };
 </script>
 
 <div class="content">
@@ -85,6 +87,23 @@
     label={multiDropdown.label} 
     items={multiDropdown.items} 
   />
+  <button on:click={(e) => console.log(e.target)}>Click me!</button>
+  <Button on:click={(e) => console.log(e.target)} value={'greetings'}>Click me!</Button>
+  <!-- button wrapper -->
+  <div>
+    <button on:click={(e) => console.log(e)}>Click me!</button>
+    <button on:click={(e) => console.log(e)}>Click me!</button>
+    <button on:click={(e) => console.log(e)}>Click me!</button>
+    <button on:click={(e) => console.log(e)}>Click me!</button>
+    <button on:click={(e) => console.log(e)}>Click me!</button>
+  </div>
+  <ButtonRow>
+    <Button on:click={(e) => console.log(e)} value={1}>Click me!</Button>
+    <Button on:click={(e) => console.log(e)} value={2}>Click me!</Button>
+    <Button on:click={(e) => console.log(e)} value={3}>Click me!</Button>
+    <Button on:click={(e) => console.log(e)} value={4}>Click me!</Button>
+    <Button on:click={(e) => console.log(e)} value={5}>Click me!</Button>
+  </ButtonRow>
 </div>
 
 <style>
