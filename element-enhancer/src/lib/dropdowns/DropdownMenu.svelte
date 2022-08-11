@@ -1,10 +1,11 @@
 <script lang="ts">
   import { KeyCodes } from "@/util/KeyCodes";
-  import { onMount, createEventDispatcher } from "svelte";
+  import { createEventDispatcher } from "svelte";
+  import type { StyleOptions } from '@/util/types/StyleOptions'
 
   type Item = {
     name: string;
-    value: string | number;
+    value: string;
   };
 
   const dispatch = createEventDispatcher();
@@ -12,29 +13,34 @@
   // Props
   export let label: string;
   export let items: Item[];
+  // Custom styles
+  export let styleOptions: StyleOptions = undefined
 
-  // Stat
+  $: cssVariables = styleOptions ? 
+  Object.entries(styleOptions)
+    .map(([key, value]) => `--${key}:${value}`)
+    .join(';') 
+  : null;
+
+  // State
   let selected: Item;
   let isOpen = false;
-  let width: number;
-  let initWidth: number;
 
-  // TODO: This method of setting initial width is not ideal. Should rather let the user
-  // decide a min and max width
-  // Update css variables on mount
-  let cssVariables: string;
-  onMount(() => {
-    initWidth = width;
+  /**
+   * Dispatches the selected item whenever it changes
+  */
+  $: dispatch('change', selected?.value)
 
-    // Styles
-    let styles = {
-      "init-width": `${initWidth}px`,
-    };
-
-    cssVariables = Object.entries(styles)
-      .map(([key, value]) => `--${key}:${value}`)
-      .join(";");
-  });
+  /**
+   * Checks if an item is selected.
+   * Returns true if it is and false if not
+   * @param item, the item to check wether or not is selected
+   */
+  $: isChecked = (item: Item) => {
+    if (selected) {
+      return selected.value === item.value
+    }
+  }
 
   /**
    * Toggles the dropdown list
@@ -47,14 +53,24 @@
    * Handles key event.
    * If enter is pressed on label: toggle dropdown list.
    * If enter is pressed on item in dropdown: handle the selection of that item
+   * If escape is pressed: dropdown is closed
    * @param e, the event triggered by a key press
    * @param item, the item selected, or empty if label is selected.
    */
   const handleKeyEvent = (e: KeyboardEvent, item?: Item) => {
     if (e.key === KeyCodes.ENTER) {
       item ? handleSelect(item) : toggleDropdown();
+    } else if (e.key === KeyCodes.ESC) {
+      closeDropdown();
     }
   };
+
+  /**
+   * Closes the dropdown menu
+   */
+  const closeDropdown = () => {
+    isOpen = false;
+  }
 
   /**
    * Handles the selection of an item
@@ -62,12 +78,11 @@
    */
   const handleSelect = (item: Item) => {
     selected = item;
-    dispatch("change", selected.value);
     toggleDropdown();
   };
 </script>
 
-<div class="el el-dropdown" bind:clientWidth={width} style={cssVariables}>
+<div class="el el-dropdown" style={cssVariables}>
   <div
     on:click={toggleDropdown}
     on:keyup={(e) => handleKeyEvent(e)}
@@ -89,12 +104,15 @@
     >
   </div>
   <ul class="el-list" data-open={isOpen}>
-    {#each items as item, index}
+    <!-- TODO: Make a visual representation of the selected item
+    also in the list (not just label) -->
+    {#each items as item, index (index)}
       <li
         on:click={() => handleSelect(item)}
         on:keyup={(e) => handleKeyEvent(e, item)}
         class="el-item"
         tabindex="0"
+        data-checked={isChecked(item)}
       >
         {item.name}
       </li>
@@ -104,59 +122,77 @@
 
 <style>
   .el-dropdown {
+    color: var(--textColor);
+    min-width: var(--minWidth);
+    max-width: var(--maxWidth);
+
     position: relative;
-    color: var(--theme-color);
-    min-width: var(--init-width);
   }
 
   .el-label {
-    --lightness: 10%;
+    border: var(--borderThickness) var(--borderStyle) var(--borderColor);
+    border-radius: var(--borderRadius);
+    padding-block: var(--spacingY);
+    padding-inline: var(--spacingX);
+    background-color: var(--bgColor);
+    
+    transition: background-color var(--animationDuration)
+        var(--animationFunction),
+      color var(--animationDuration) var(--animationFunction);
+
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 0.5rem;
-    border: var(--border);
-    border-radius: var(--border-radius);
-    padding-block: var(--spacing-y);
-    padding-inline: var(--spacing-x);
-    background-color: var(--theme-bg);
 
     position: relative;
-
-    transition: background-color var(--animation-duration)
-        var(--animation-function),
-      color var(--animation-duration) var(--animation-function);
   }
 
-  .el-label:hover,
+  .el-label:hover {
+    background-color: var(--bgColorHover);
+    color: var(--textColorHover);
+    border-color: var(--borderColorHover);
+  }
+
   .el-label:focus-visible {
-    background-color: var(--theme-color);
-    color: var(--theme-bg);
+    background-color: var(--bgColorFocus);
+    color: var(--textColorFocus);
+    border-color: var(--borderColorFocus);
   }
 
   .el-label svg {
-    width: 0.5rem;
-    fill: var(--theme-color);
-    transition: transform var(--animation-duration) var(--animation-function),
-      fill var(--animation-duration) var(--animation-function);
+    fill: var(--textColor);
+    transition: transform var(--animationDuration) var(--animationFunction),
+    fill var(--animationDuration) var(--animationFunction);
   }
 
   .el-label svg[data-open="true"] {
     transform: rotate(90deg);
   }
 
-  .el-label:hover svg,
+  .el-label:hover svg {
+    fill: var(--textColorHover);
+  }
+
   .el-label:focus-visible svg {
-    fill: var(--theme-bg);
+    fill: var(--textColorFocus);
   }
 
   .el-list {
+    box-shadow: 
+      var(--shadowX) 
+      var(--shadowY) 
+      var(--shadowBlur)
+      var(--shadowOffset) 
+      var(--shadowColor);
+    background-color: var(--neutralColor);
+    padding-block: var(--spacingY);
+    
     display: none;
-    /* TODO: Maybe have one more look at this */
-    box-shadow: var(--shadow-x) var(--shadow-y) var(--shadow-blur)
-      var(--shadow-offset) var(--shadow-color);
     position: absolute;
-    padding-block: var(--spacing-2);
+    left:0;
+    right: 0;
+    z-index: 99999;
     min-width: fit-content;
   }
 
@@ -165,12 +201,26 @@
   }
 
   .el-item {
-    padding-inline: var(--spacing-x);
-    padding-block: var(--spacing-y);
+    padding-inline: var(--spacingX);
+    padding-block: var(--spacingY);
+
+    transition:
+      background-color var(--animationDuration) var(--animationFunction),
+      color var(--animationDuration) var(--animationFunction);
   }
 
-  .el-item:hover,
+  .el-item:hover {
+    background-color: var(--bgColorHover);
+    color: var(--textColorHover);
+  }
+
   .el-item:focus {
-    background-color: var(--theme-bg);
+    background-color: var(--bgColorFocus);
+    color: var(--textColorFocus)
+  }
+
+  .el-item[data-checked="true"] {
+    background-color: var(--bgColorSelected);
+    color: var(--textColorSelected);
   }
 </style>

@@ -13,42 +13,85 @@
   list-style-type: none;
 }
 
+.el svg {
+  width: 0.5rem;
+}
+
 /* Css variables */
 .el {
   /* Colors */
-  --theme-color: #5f3dc4;
-  --theme-bg: #e5dbff;
+  --default-text-color: #5f3dc5;
+  --default-text-color-hover: #e5dbff;
+  --default-text-color-focus: #e5dbff;
+  --default-text-color-selected: #e5dbff;
+  --default-bg-color: #e5dbff;
+  --default-bg-color-hover: #5f3dc5;
+  --default-bg-color-focus: #5f3dc5;
+  --default-bg-color-selected: #5f3dc5;
+  --default-border-color: var(--default-text-color);
+  --default-border-color-hover: var(--default-text-color);
+  --default-border-color-focus: var(--default-text-color);
+  --default-border-color-selected: var(--default-text-color);
+  --default-neutral-color: #fff;
 
   /* Typography */
-  --ff: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  --default-font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 
   /* Borders */
-  --border-thickness: 1px;
-  --border-style: solid;
-  --border-color: var(--theme-color);
-  --border: var(--border-thickness) var(--border-style) var(--border-color);
-  --border-radius: 5px;
+  --default-border-thickness: 1px;
+  --default-border-style: solid;
+  --default-border-radius: 5px;
 
   /* Spacing */
-  --spacing-y: 1rem;
-  --spacing-x: 1.5rem;
+  --default-spacing-x: 1.5rem;
+  --default-spacing-y: 1rem;
 
   /* Shadows */
-  --shadow-x: 0;
-  --shadow-y: 5px;
-  --shadow-blur: 10px;
-  --shadow-offset: 0;
-  --shadow-color: rgba(0, 0, 0, 0.1);
-
-  --shadow: var(--shadow-x) var(--shadow-y) var(--shadow-blur)
-    var(--shadow-offset) var(--shadow-color);
+  --default-shadow-x: 0;
+  --default-shadow-y: 5px;
+  --default-shadow-blur: 10px;
+  --default-shadow-offset: 0;
+  --default-shadow-color: rgba(0, 0, 0, 0.1);
 
   /* Animations */
-  --animation-duration: 150ms;
-  --animation-function: ease-in-out;
+  --default-animation-duration: 150ms;
+  --default-animation-function: ease-in-out;
 }
 
 /* Default styles for element enhancer */
-.el * {
-  font-family: var(--ff);
+.el {
+  /* Colors */
+  --textColor: var(--default-text-color);
+  --textColorHover: var(--default-text-color-hover);
+  --textColorFocus: var(--default-text-color-focus);
+  --textColorSelected: var(--default-text-color-selected);
+  --bgColor: var(--default-bg-color);
+  --bgColorHover: var(--default-bg-color-hover);
+  --bgColorFocus: var(--default-bg-color-focus);
+  --bgColorSelected: var(--default-bg-color-selected);
+  --borderColor: var(--default-border-color);
+  --borderColorHover: var(--default-border-color-hover);
+  --borderColorFocus: var(--default-border-color-focus);
+  --borderColorSelected: var(--default-border-color-selected);
+  --neutralColor: var(--default-neutral-color);
+  /* Typography */
+  --fontFamily: var(--default-font-family);
+  /* Border */
+  --borderThickness: var(--default-border-thickness);
+  --borderStyle: var(--default-border-style);
+  --borderRadius: var(--default-border-radius);
+  /* Spacing */
+  --spacingX: var(--default-spacing-x);
+  --spacingY: var(--default-spacing-y);
+  /* Shadow */
+  --shadowX: var(--default-shadow-x);
+  --shadowY: var(--default-shadow-y);
+  --shadowBlur: var(--default-shadow-blur);
+  --shadowOffset: var(--default-shadow-offset);
+  --shadowColor: var(--default-shadow-color);
+  /* Animation */
+  --animationDuration: var(--default-animation-duration);
+  --animationFunction: var(--default-animation-function);
+
+  font-family: var(--fontFamily);
 }
