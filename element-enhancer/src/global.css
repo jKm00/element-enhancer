@@ -17,81 +17,81 @@
   width: 0.5rem;
 }
 
-/* Css variables */
-.el {
-  /* Colors */
-  --default-text-color: #5f3dc5;
-  --default-text-color-hover: #e5dbff;
-  --default-text-color-focus: #e5dbff;
-  --default-text-color-selected: #e5dbff;
-  --default-bg-color: #e5dbff;
-  --default-bg-color-hover: #5f3dc5;
-  --default-bg-color-focus: #5f3dc5;
-  --default-bg-color-selected: #5f3dc5;
-  --default-border-color: var(--default-text-color);
-  --default-border-color-hover: var(--default-text-color);
-  --default-border-color-focus: var(--default-text-color);
-  --default-border-color-selected: var(--default-text-color);
-  --default-neutral-color: #fff;
-
-  /* Typography */
-  --default-font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-
-  /* Borders */
-  --default-border-thickness: 1px;
-  --default-border-style: solid;
-  --default-border-radius: 5px;
-
-  /* Spacing */
-  --default-spacing-x: 1.5rem;
-  --default-spacing-y: 1rem;
-
-  /* Shadows */
-  --default-shadow-x: 0;
-  --default-shadow-y: 5px;
-  --default-shadow-blur: 10px;
-  --default-shadow-offset: 0;
-  --default-shadow-color: rgba(0, 0, 0, 0.1);
-
-  /* Animations */
-  --default-animation-duration: 150ms;
-  --default-animation-function: ease-in-out;
-}
-
 /* Default styles for element enhancer */
 .el {
   /* Colors */
-  --textColor: var(--default-text-color);
-  --textColorHover: var(--default-text-color-hover);
-  --textColorFocus: var(--default-text-color-focus);
-  --textColorSelected: var(--default-text-color-selected);
-  --bgColor: var(--default-bg-color);
-  --bgColorHover: var(--default-bg-color-hover);
-  --bgColorFocus: var(--default-bg-color-focus);
-  --bgColorSelected: var(--default-bg-color-selected);
-  --borderColor: var(--default-border-color);
-  --borderColorHover: var(--default-border-color-hover);
-  --borderColorFocus: var(--default-border-color-focus);
-  --borderColorSelected: var(--default-border-color-selected);
-  --neutralColor: var(--default-neutral-color);
-  /* Typography */
-  --fontFamily: var(--default-font-family);
-  /* Border */
-  --borderThickness: var(--default-border-thickness);
-  --borderStyle: var(--default-border-style);
-  --borderRadius: var(--default-border-radius);
-  /* Spacing */
-  --spacingX: var(--default-spacing-x);
-  --spacingY: var(--default-spacing-y);
-  /* Shadow */
-  --shadowX: var(--default-shadow-x);
-  --shadowY: var(--default-shadow-y);
-  --shadowBlur: var(--default-shadow-blur);
-  --shadowOffset: var(--default-shadow-offset);
-  --shadowColor: var(--default-shadow-color);
-  /* Animation */
-  --animationDuration: var(--default-animation-duration);
-  --animationFunction: var(--default-animation-function);
+  --theme-color: #5f3dc5;
+  --theme-color-secondary: #e5dbff;
 
-  font-family: var(--fontFamily);
+  --theme-text-color: var(--theme-color);
+  --theme-text-color-hover: #fff;
+
+  --theme-bg-color: #fff;
+
+  /* Font */
+  --theme-font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  --theme-font-size: 1rem;
+  --theme-font-weight: 400;
+
+  /* Borders */
+  --theme-border-thickness: 1px;
+  --theme-border-rounding: 5px;
+  --theme-border-style: solid;
+
+  /* Spacing */
+  --theme-spacing-x: 1.5rem;
+  --theme-spacing-y: 1rem;
+
+  /* Animation */
+  --theme-animation-duration: 150ms;
+  --theme-animation-function: ease-in-out;
+}
+
+/* 
+Css variables
+All css variables are initialized to default theme
+*/
+.el {
+  /* Colors */
+  --text-color: var(--theme-color);
+  --text-color-hover: var(--theme-text-color-hover);
+  --text-color-focus: var(--theme-text-color-hover);
+  --text-color-selected: var(--theme-text-color-hover);
+
+  --bg-color: var(--theme-color-secondary);
+  --bg-color-hover: var(--theme-color);
+  --bg-color-focus: var(--theme-color);
+  --bg-color-selected: var(--theme-color);
+
+  --border-color: var(--theme-color);
+  --border-color-hover: var(--theme-color);
+  --border-color-focus: var(--theme-color);
+  --border-color-selected: var(--theme-color);
+  /* TODO: Rename to something more understandebla. Used for dropdown background etc */
+  --neutral-color: var(--theme-bg-color);
+
+  /* Typography */
+  --font-family: var(--theme-font-family);
+  --font-size: var(--theme-font-size);
+  --font-weight: var(--theme-font-weight);
+
+  /* Border */
+  --border-thickness: var(--theme-border-thickness);
+  --border-style: var(--theme-border-style);
+  --border-rounding: var(--theme-border-rounding);
+
+  /* Spacing */
+  --spacing-x: var(--theme-spacing-x);
+  --spacing-y: var(--theme-spacing-y);
+
+  /* Shadow */
+  --shadow-x: 0;
+  --shadow-y: 5px;
+  --shadow-blur: 10px;
+  --shadow-offset: 0;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+
+  /* Animation */
+  --animation-duration: var(--theme-animation-duration);
+  --animation-function: var(--theme-animation-function);
 }

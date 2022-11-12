@@ -1,7 +1,7 @@
 <script lang="ts"></script>
 
 <div class="el el-button-row">
-  <slot></slot>
+  <slot />
 </div>
 
 <style>
@@ -14,10 +14,10 @@
   }
 
   .el-button-row > :global(*):first-child {
-    border-radius: var(--borderRadius) 0 0 var(--borderRadius);
+    border-radius: var(--border-rounding) 0 0 var(--border-rounding);
   }
 
   .el-button-row > :global(*):last-child {
-    border-radius: 0 var(--borderRadius) var(--borderRadius) 0;
+    border-radius: 0 var(--border-rounding) var(--border-rounding) 0;
   }
 </style>

@@ -1,7 +1,8 @@
 <script lang="ts">
-  import { KeyCodes } from "@/util/KeyCodes";
-  import { createEventDispatcher } from "svelte";
-  import type { StyleOptions } from '@/util/types/StyleOptions'
+  import { KeyCodes } from '@/util/KeyCodes';
+  import { convertToKebabCase } from '@/util/stringUtil';
+  import { createEventDispatcher } from 'svelte';
+  import type { StyleOptions } from '@/util/types/StyleOptions';
 
   type Item = {
     name: string;
@@ -14,13 +15,13 @@
   export let label: string;
   export let items: Item[];
   // Custom styles
-  export let styleOptions: StyleOptions = undefined
+  export let styleOptions: StyleOptions = undefined;
 
-  $: cssVariables = styleOptions ? 
-  Object.entries(styleOptions)
-    .map(([key, value]) => `--${key}:${value}`)
-    .join(';') 
-  : null;
+  $: cssVariables = styleOptions
+    ? Object.entries(styleOptions)
+        .map(([key, value]) => `--${convertToKebabCase(key)}:${value}`)
+        .join(';')
+    : null;
 
   // State
   let selected: Item;
@@ -28,8 +29,8 @@
 
   /**
    * Dispatches the selected item whenever it changes
-  */
-  $: dispatch('change', selected?.value)
+   */
+  $: dispatch('change', selected?.value);
 
   /**
    * Checks if an item is selected.
@@ -38,9 +39,9 @@
    */
   $: isChecked = (item: Item) => {
     if (selected) {
-      return selected.value === item.value
+      return selected.value === item.value;
     }
-  }
+  };
 
   /**
    * Toggles the dropdown list
@@ -70,7 +71,7 @@
    */
   const closeDropdown = () => {
     isOpen = false;
-  }
+  };
 
   /**
    * Handles the selection of an item
@@ -85,7 +86,7 @@
 <div class="el el-dropdown" style={cssVariables}>
   <div
     on:click={toggleDropdown}
-    on:keyup={(e) => handleKeyEvent(e)}
+    on:keyup={e => handleKeyEvent(e)}
     class="el-label"
     tabindex="0"
   >
@@ -109,7 +110,7 @@
     {#each items as item, index (index)}
       <li
         on:click={() => handleSelect(item)}
-        on:keyup={(e) => handleKeyEvent(e, item)}
+        on:keyup={e => handleKeyEvent(e, item)}
         class="el-item"
         tabindex="0"
         data-checked={isChecked(item)}
@@ -122,23 +123,27 @@
 
 <style>
   .el-dropdown {
-    color: var(--textColor);
-    min-width: var(--minWidth);
-    max-width: var(--maxWidth);
+    font-family: var(--font-family);
+    font-size: var(--font-size);
+    font-weight: var(--font-weight);
+
+    color: var(--text-color);
+    min-width: var(--min-width);
+    max-width: var(--max-width);
 
     position: relative;
   }
 
   .el-label {
-    border: var(--borderThickness) var(--borderStyle) var(--borderColor);
-    border-radius: var(--borderRadius);
-    padding-block: var(--spacingY);
-    padding-inline: var(--spacingX);
-    background-color: var(--bgColor);
-    
-    transition: background-color var(--animationDuration)
-        var(--animationFunction),
-      color var(--animationDuration) var(--animationFunction);
+    border: var(--border-thickness) var(--border-style) var(--border-color);
+    border-radius: var(--border-rounding);
+    padding-block: var(--spacing-y);
+    padding-inline: var(--spacing-y);
+    background-color: var(--bg-color);
+
+    transition: background-color var(--animation-duration)
+        var(--animation-function),
+      color var(--animation-duration) var(--animation-function);
 
     display: flex;
     justify-content: space-between;
@@ -149,78 +154,74 @@
   }
 
   .el-label:hover {
-    background-color: var(--bgColorHover);
-    color: var(--textColorHover);
-    border-color: var(--borderColorHover);
+    background-color: var(--bg-color-hover);
+    color: var(--text-color-hover);
+    border-color: var(--border-color-hover);
   }
 
   .el-label:focus-visible {
-    background-color: var(--bgColorFocus);
-    color: var(--textColorFocus);
-    border-color: var(--borderColorFocus);
+    background-color: var(--bg-color-focus);
+    color: var(--text-color-focus);
+    border-color: var(--border-color-focus);
   }
 
   .el-label svg {
-    fill: var(--textColor);
-    transition: transform var(--animationDuration) var(--animationFunction),
-    fill var(--animationDuration) var(--animationFunction);
+    fill: var(--text-color);
+    transition: transform var(--animation-duration) var(--animation-function),
+      fill var(--animation-duration) var(--animation-function);
   }
 
-  .el-label svg[data-open="true"] {
+  .el-label svg[data-open='true'] {
     transform: rotate(90deg);
   }
 
   .el-label:hover svg {
-    fill: var(--textColorHover);
+    fill: var(--text-color-hover);
   }
 
   .el-label:focus-visible svg {
-    fill: var(--textColorFocus);
+    fill: var(--text-color-focus);
   }
 
   .el-list {
-    box-shadow: 
-      var(--shadowX) 
-      var(--shadowY) 
-      var(--shadowBlur)
-      var(--shadowOffset) 
-      var(--shadowColor);
-    background-color: var(--neutralColor);
-    padding-block: var(--spacingY);
-    
+    box-shadow: var(--shadow-x) var(--shadow-y) var(--shadow-blur)
+      var(--shadow-offset) var(--shadow-color);
+    background-color: var(--neutral-color);
+    padding-block: var(--spacing-y);
+
     display: none;
     position: absolute;
-    left:0;
+    left: 0;
     right: 0;
     z-index: 99999;
     min-width: fit-content;
   }
 
-  .el-list[data-open="true"] {
+  .el-list[data-open='true'] {
     display: block;
   }
 
   .el-item {
-    padding-inline: var(--spacingX);
-    padding-block: var(--spacingY);
+    padding-inline: var(--spacing-x);
+    padding-block: var(--spacing-y);
 
-    transition:
-      background-color var(--animationDuration) var(--animationFunction),
-      color var(--animationDuration) var(--animationFunction);
+    transition: background-color var(--animation-duration)
+        var(--animation-function),
+      color var(--animation-duration) var(--animation-function);
   }
 
   .el-item:hover {
-    background-color: var(--bgColorHover);
-    color: var(--textColorHover);
+    background-color: var(--bg-color-hover);
+    color: var(--text-color-hover);
   }
 
   .el-item:focus {
-    background-color: var(--bgColorFocus);
-    color: var(--textColorFocus)
+    background-color: var(--bg-color-focus);
+    color: var(--text-color-focus);
   }
 
-  .el-item[data-checked="true"] {
-    background-color: var(--bgColorSelected);
-    color: var(--textColorSelected);
+  .el-item[data-checked='true'] {
+    background-color: var(--bg-color-selected);
+    color: var(--text-color-selected);
   }
 </style>

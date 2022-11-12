@@ -1,40 +1,40 @@
 <script lang="ts">
-  import DropdownMenu from "@/lib/dropdowns/DropdownMenu.svelte";
-  import MultiDropdownMenu from "@/lib/dropdowns/MultiDropdownMenu.svelte";
-  import Button from '@/lib/buttons/Button.svelte'
-  import ButtonRow from "@/lib/buttons/ButtonRow.svelte";
-  import '@/test.css'
+  import DropdownMenu from '@/lib/dropdowns/DropdownMenu.svelte';
+  import MultiDropdownMenu from '@/lib/dropdowns/MultiDropdownMenu.svelte';
+  import Button from '@/lib/buttons/Button.svelte';
+  import ButtonRow from '@/lib/buttons/ButtonRow.svelte';
+  import '@/test.css';
 
   const dropdown = {
-    label: "My dropdown",
+    label: 'My dropdown',
     items: [
       {
-        name: "Monday",
-        value: "monday",
+        name: 'Monday',
+        value: 'monday',
       },
       {
-        name: "Tuesday",
-        value: "tuesday",
+        name: 'Tuesday',
+        value: 'tuesday',
       },
       {
-        name: "WendsdayWendsday",
-        value: "wendsday",
+        name: 'WendsdayWendsday',
+        value: 'wendsday',
       },
       {
-        name: "Thursday",
-        value: "thursday",
+        name: 'Thursday',
+        value: 'thursday',
       },
       {
-        name: "Friday",
-        value: "friday",
+        name: 'Friday',
+        value: 'friday',
       },
       {
-        name: "Saturday",
-        value: "saturday",
+        name: 'Saturday',
+        value: 'saturday',
       },
       {
-        name: "Sunday",
-        value: "sunday",
+        name: 'Sunday',
+        value: 'sunday',
       },
     ],
   };
@@ -44,21 +44,21 @@
     items: [
       {
         name: 'Apple',
-        value: 'apple'
+        value: 'apple',
       },
       {
         name: 'Orange',
-        value: 'orange'
+        value: 'orange',
       },
       {
         name: 'Banan',
-        value: 'banane'
+        value: 'banane',
       },
       {
         name: 'Grape',
-        value: 'grape'
-      }
-    ]
+        value: 'grape',
+      },
+    ],
   };
 </script>
 
@@ -72,7 +72,7 @@
     <option value="audi">Audi</option>
   </select>
   <DropdownMenu
-    on:change={(r) => console.log(r.detail)}
+    on:change={r => console.log(r.detail)}
     label={dropdown.label}
     items={dropdown.items}
   />
@@ -82,27 +82,29 @@
     <option value="banan">Banan</option>
     <option value="grape">Grape</option>
   </select>
-  <MultiDropdownMenu 
-    on:change={(r) => console.log(r.detail)} 
-    label={multiDropdown.label} 
-    items={multiDropdown.items} 
+  <MultiDropdownMenu
+    on:change={r => console.log(r.detail)}
+    label={multiDropdown.label}
+    items={multiDropdown.items}
   />
-  <button on:click={(e) => console.log(e.target)}>Click me!</button>
-  <Button on:click={(e) => console.log(e.target)} value={'greetings'}>Click me!</Button>
+  <button on:click={e => console.log(e.target)}>Click me!</button>
+  <Button on:click={e => console.log(e.target)} value={'greetings'}
+    >Click me!</Button
+  >
   <!-- button wrapper -->
   <div>
-    <button on:click={(e) => console.log(e)}>Click me!</button>
-    <button on:click={(e) => console.log(e)}>Click me!</button>
-    <button on:click={(e) => console.log(e)}>Click me!</button>
-    <button on:click={(e) => console.log(e)}>Click me!</button>
-    <button on:click={(e) => console.log(e)}>Click me!</button>
+    <button on:click={e => console.log(e)}>Click me!</button>
+    <button on:click={e => console.log(e)}>Click me!</button>
+    <button on:click={e => console.log(e)}>Click me!</button>
+    <button on:click={e => console.log(e)}>Click me!</button>
+    <button on:click={e => console.log(e)}>Click me!</button>
   </div>
   <ButtonRow>
-    <Button on:click={(e) => console.log(e)} value={1}>Click me!</Button>
-    <Button on:click={(e) => console.log(e)} value={2}>Click me!</Button>
-    <Button on:click={(e) => console.log(e)} value={3}>Click me!</Button>
-    <Button on:click={(e) => console.log(e)} value={4}>Click me!</Button>
-    <Button on:click={(e) => console.log(e)} value={5}>Click me!</Button>
+    <Button on:click={e => console.log(e)} value={1}>Click me!</Button>
+    <Button on:click={e => console.log(e)} value={2}>Click me!</Button>
+    <Button on:click={e => console.log(e)} value={3}>Click me!</Button>
+    <Button on:click={e => console.log(e)} value={4}>Click me!</Button>
+    <Button on:click={e => console.log(e)} value={5}>Click me!</Button>
   </ButtonRow>
 </div>
 

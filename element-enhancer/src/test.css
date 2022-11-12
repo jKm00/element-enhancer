@@ -4,8 +4,11 @@ stylesheet works
 
 And it does :))
 */
-
-/* .el {
-  --textColor: red;
-  --bgColor: blue;
+/* 
+.el {
+  --theme-color: red;
+  --theme-color-secondary: salmon;
+  --theme-bg-color: blue;
+  --text-color: red;
+  --bg-color: blue;
 } */

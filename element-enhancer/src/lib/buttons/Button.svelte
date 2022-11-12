@@ -1,39 +1,39 @@
 <script lang="ts">
-  export let value: string | number
+  export let value: string | number;
 </script>
 
-<button class="el el-button" on:click value={value}><slot></slot></button>
+<button class="el el-button" on:click {value}><slot /></button>
 
 <style>
   .el-button {
-    color: var(--textColor);
-    background-color: var(--bgColor);
-    border: var(--borderThickness) var(--borderStyle) var(--borderColor);
-    border-radius: var(--borderRadius);
-    box-shadow: 
-      var(--shadowX)
-      var(--shadowY)
-      var(--shadowBlur)
-      var(--shadowOffset)
-      var(--shadowColor);
-    padding-inline: var(--spacingX);
-    padding-block: var(--spacingY);
+    font-family: var(--font-family);
+    font-size: var(--font-size);
+    font-weight: var(--font-weight);
 
-    transition: 
-      background-color var(--animationDuration) var(--animationFunction)
-      color var(--animationDuration) var(--animationFunction)
-      bprder-color var(--animationDuration) var(--animationFunction);
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    border: var(--border-thickness) var(--border-style) var(--border-color);
+    border-radius: var(--border-rounding);
+    box-shadow: var(--shadow-x) var(--shadow-y) var(--shadow-blur)
+      var(--shadow-offset) var(--shadow-color);
+    padding-inline: var(--spacing-x);
+    padding-block: var(--spacing-y);
+
+    transition: background-color var(--animation-duration)
+      var(--animation-function) color var(--animation-duration)
+      var(--animation-function) bprder-color var(--animation-duration)
+      var(--animation-function);
   }
 
   .el-button:hover {
-    background-color: var(--bgColorHover);
-    color: var(--textColorHover);
-    border-color: var(--borderColorHover)
+    background-color: var(--bg-color-hover);
+    color: var(--text-color-hover);
+    border-color: var(--border-color-hover);
   }
 
   .el-button:focus-visible {
-    background-color: var(--bgColorFocus);
-    color: var(--textColorFocus);
-    border-color: var(--borderColorFocus)
+    background-color: var(--bg-color-focus);
+    color: var(--text-color-focus);
+    border-color: var(--border-color-focus);
   }
 </style>
