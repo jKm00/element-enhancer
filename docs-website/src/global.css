@@ -114,6 +114,10 @@ svg {
 	line-height: 2.5rem;
 }
 
+.text--small {
+	line-height: 1.5rem;
+}
+
 .inline-list {
 	list-style-type: disc;
 	margin-left: 1rem;
@@ -210,6 +214,36 @@ svg {
 	padding: 1rem;
 	border-radius: var(--border-radius);
 	box-shadow: var(--box-shadow);
+}
+
+.table {
+	border-spacing: 1rem;
+	width: 100%;
+}
+
+.table-row th,
+.table-row td {
+	max-width: 20rem;
+	padding-bottom: 1rem;
+}
+
+.text-list {
+	list-style: inside;
+	margin-left: 1rem;
+}
+
+.flex {
+	display: flex;
+}
+
+.center {
+	height: 100%;
+	align-items: center;
+	justify-content: center;
+}
+
+.gap-0-5 {
+	gap: 0.5em;
 }
 
 /* Light theme */
