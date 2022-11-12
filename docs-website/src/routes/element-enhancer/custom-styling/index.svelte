@@ -23,9 +23,9 @@ TODO: Rewrite global styles configuration
 
   # Global styles
 
-  The concept of global styles is that is can be configured once in a 
-  global css file imported somewhere in the root of the application and
-  the styles will be applied to all element-enhancer elements.default
+  The concept of global styles is that it can be configured once in a 
+  global css file which is imported somewhere in the root of the application 
+  and the styles will be applied to all element-enhancer elements.
 
   When configuring the global styles, it needs to be done inside an .el block
   to make sure the styles are only applied to element-enhancer elements.
@@ -42,7 +42,7 @@ TODO: Rewrite global styles configuration
   you can configure each individual style attribute. In this layer you can
   also set different styles for different states such as hover, focus and
   selected if you are not pleased with the way it is inherited from the
-  first layer.
+  first layer (the color theme layer).
 
   You can combine both layers to get a unique style just for your application
   and still have the same functionallity of all elements.
@@ -61,7 +61,7 @@ TODO: Rewrite global styles configuration
 
   ## Combining both layers
 
-  There are multiple waus to combine both layers. The most common way is to only 
+  There are multiple ways to combine both layers. The most common way is to only 
   create one css file and configure both layers in that. With this way of doing it, 
   you need to make sure the color theme variables are configured before the more 
   specific styles variables.
@@ -78,15 +78,16 @@ TODO: Rewrite global styles configuration
   # Element specific styles
 
   Element-enhancer also allows you to specify styles for each individual component.
-  This is done by adding a style tag inside the component and then adding the styles
-  you want to override. Element specific styles will always override the global styles.
+  This is done by adding an inline style tag to the component and then adding the 
+  styles you want to override. Element specific styles will always override the 
+  global styles.
   
   ... show examples and whatnot
 
   This can be extremly useful if you want to change the style of just one component whilst
   having a general theme for the rest of the application.
 
-  For more details on what element specific styles each element has, and navigate to 
+  For more details on what element specific styles each element has, navigate to 
   the element you want to configure. There you will find a complete list of all it's
   style attributes and what they do as well as examples of how to use them.
 -->
