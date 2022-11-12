@@ -1,8 +1,22 @@
 <script lang="ts">
+  import { convertToKebabCase } from '@/util/stringUtil';
+  import type { StyleOptions } from '@/util/types/StyleOptions';
+
+  // Props
   export let value: string | number;
+  // Custom styles
+  export let styleOptions: StyleOptions = undefined;
+
+  $: cssVariables = styleOptions
+    ? Object.entries(styleOptions)
+        .map(([key, value]) => `--${convertToKebabCase(key)}:${value}`)
+        .join(';')
+    : null;
 </script>
 
-<button class="el el-button" on:click {value}><slot /></button>
+<button class="el el-button" style={cssVariables} on:click {value}
+  ><slot /></button
+>
 
 <style>
   .el-button {

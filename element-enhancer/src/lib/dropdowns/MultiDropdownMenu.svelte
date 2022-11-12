@@ -2,7 +2,7 @@
   import { KeyCodes } from '@/util/KeyCodes';
   import type { StyleOptions } from '@/util/types/StyleOptions';
   import { createEventDispatcher } from 'svelte';
-  import { truncateString } from '@/util/stringUtil';
+  import { convertToKebabCase, truncateString } from '@/util/stringUtil';
 
   const TRUNC_LENGTH = 15;
 
@@ -21,7 +21,7 @@
 
   $: cssVariables = styleOptions
     ? Object.entries(styleOptions)
-        .map(([key, value]) => `--${key}:${value}`)
+        .map(([key, value]) => `--${convertToKebabCase(key)}:${value}`)
         .join(';')
     : null;
 

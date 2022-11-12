@@ -65,6 +65,7 @@
 <div class="content">
   <h1>Default</h1>
   <h1>Element enhancer</h1>
+  <!-- Dropdown -->
   <select name="cars" id="cars">
     <option value="volvo">Volvo</option>
     <option value="saab">Saab</option>
@@ -76,6 +77,7 @@
     label={dropdown.label}
     items={dropdown.items}
   />
+  <!-- Multi select dropdown -->
   <select name="fruits" id="fruits">
     <option value="apple">Apple</option>
     <option value="orange">Orange</option>
@@ -87,11 +89,12 @@
     label={multiDropdown.label}
     items={multiDropdown.items}
   />
+  <!-- Button -->
   <button on:click={e => console.log(e.target)}>Click me!</button>
   <Button on:click={e => console.log(e.target)} value={'greetings'}
     >Click me!</Button
   >
-  <!-- button wrapper -->
+  <!-- Multiple buttons together -->
   <div>
     <button on:click={e => console.log(e)}>Click me!</button>
     <button on:click={e => console.log(e)}>Click me!</button>
