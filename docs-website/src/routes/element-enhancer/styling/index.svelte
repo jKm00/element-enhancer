@@ -101,6 +101,10 @@ TODO: Rewrite global styles configuration
   the element you want to configure. There you will find a complete list of all it's
   style attributes and what they do as well as examples of how to use them.
 -->
+<svelte:head>
+	<title>Element Enhancer - Styling</title>
+</svelte:head>
+
 <MainContent>
 	<section slot="content" class="section" id="custom-styling">
 		<h1 class="title title--main">Custom styling</h1>

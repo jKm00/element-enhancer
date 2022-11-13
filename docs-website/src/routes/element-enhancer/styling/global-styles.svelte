@@ -9,38 +9,42 @@
 	const pageContent = [
 		{
 			title: 'Global styles',
-			path: '/element-enhancer/styling/global-styles#global-styles',
+			path: '#global-styles',
 		},
 		{
 			title: 'Two configuration layers',
-			path: '/element-enhancer/styling/global-styles#configuration-layers',
+			path: '#configuration-layers',
 		},
 		{
 			title: 'Color theme',
-			path: '/element-enhancer/styling/global-styles#color-theme',
+			path: '#color-theme',
 		},
 		{
 			title: 'List of all color theme variables',
-			path: '/element-enhancer/styling/global-styles#color-theme-list',
+			path: '#color-theme-list',
 		},
 		{
 			title: 'Specific styles',
-			path: '/element-enhancer/styling/global-styles#specific-styles',
+			path: '#specific-styles',
 		},
 		{
 			title: 'List of all specific styles variables',
-			path: '/element-enhancer/styling/global-styles#specific-styles-list',
+			path: '#specific-styles-list',
 		},
 		{
 			title: 'Combining both layers',
-			path: '/element-enhancer/styling/global-styles#combining-layers',
+			path: '#combining-layers',
 		},
 		{
 			title: 'Multiple themes for one application',
-			path: '/element-enhancer/styling/global-styles#mutliple-themes',
+			path: '#mutliple-themes',
 		},
 	];
 </script>
+
+<svelte:head>
+	<title>Element Enhancer - Global Styles</title>
+</svelte:head>
 
 <MainContent>
 	<!-- Content -->

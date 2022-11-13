@@ -3,6 +3,10 @@
 	import { scale, fade, fly } from 'svelte/transition';
 </script>
 
+<svelte:head>
+	<title>Element Enhancer</title>
+</svelte:head>
+
 <div class="wrapper">
 	<div class="content" in:fly={{ y: 25, duration: 1000 }}>
 		<nav class="card">

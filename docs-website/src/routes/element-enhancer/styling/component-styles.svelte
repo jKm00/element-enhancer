@@ -6,6 +6,10 @@
 	import MainContent from '@/components/content/MainContent.svelte';
 </script>
 
+<svelte:head>
+	<title>Element Enhancer - Component Specific Styles</title>
+</svelte:head>
+
 <MainContent>
 	<section slot="content" class="section" id="component-styles">
 		<h1 class="title title--main">Component specific style</h1>

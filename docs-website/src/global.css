@@ -35,6 +35,7 @@ img {
 	--clr-theme-600: #5e3cc3;
 
 	--clr-text: var(--clr-text-dark);
+	--clr-link: var(--clr-link-dark);
 	--clr-bg: var(--clr-bg-dark);
 	--clr-card-bg: var(--clr-card-bg-dark);
 	--clr-inline-code-bg: var(--clr-inline-code-bg-dark);
@@ -49,6 +50,7 @@ img {
 
 	/* Dark theme colors */
 	--clr-text-dark: #fff;
+	--clr-link-dark: #8e76d5;
 	--clr-bg-dark: #1a1a1a;
 	--clr-card-bg-dark: #262626;
 	--clr-inline-code-bg-dark: #404040;
@@ -60,6 +62,7 @@ img {
 
 	/* Light theme colors */
 	--clr-text-light: #262626;
+	--clr-link-light: #5e3cc3;
 	--clr-bg-light: #d9d9d9;
 	--clr-card-bg-light: #f2f2f2;
 	--clr-inline-code-bg-light: #fff;
@@ -94,7 +97,7 @@ body {
 }
 
 a {
-	color: #7e63cf;
+	color: var(--clr-link);
 }
 
 svg {
@@ -247,6 +250,7 @@ svg {
 /* Light theme */
 body[data-theme='light'] {
 	--clr-text: var(--clr-text-light);
+	--clr-link: var(--clr-link-light);
 	--clr-bg: var(--clr-bg-light);
 	--clr-card-bg: var(--clr-card-bg-light);
 	--clr-inline-code-bg: var(--clr-inline-code-bg-light);

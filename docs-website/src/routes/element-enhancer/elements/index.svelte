@@ -3,6 +3,10 @@
 	import PageNavigation from '@/components/navigation/PageNavigation.svelte';
 </script>
 
+<svelte:head>
+	<title>Element Enhancer - Elements</title>
+</svelte:head>
+
 <MainContent>
 	<section slot="content" class="section">
 		<h1 class="title title--main">Elements - Generally usage</h1>
