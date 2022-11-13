@@ -156,13 +156,11 @@
   .el-label:hover {
     background-color: var(--bg-color-hover);
     color: var(--text-color-hover);
-    border-color: var(--border-color-hover);
   }
 
   .el-label:focus-visible {
     background-color: var(--bg-color-focus);
     color: var(--text-color-focus);
-    border-color: var(--border-color-focus);
   }
 
   .el-label svg {
@@ -188,6 +186,7 @@
       var(--shadow-offset) var(--shadow-color);
     background-color: var(--pop-up-bg);
     padding-block: var(--spacing-y);
+    border-radius: var(--border-rounding);
 
     display: none;
     position: absolute;

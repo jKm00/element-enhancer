@@ -42,12 +42,10 @@
   .el-button:hover {
     background-color: var(--bg-color-hover);
     color: var(--text-color-hover);
-    border-color: var(--border-color-hover);
   }
 
   .el-button:focus-visible {
     background-color: var(--bg-color-focus);
     color: var(--text-color-focus);
-    border-color: var(--border-color-focus);
   }
 </style>

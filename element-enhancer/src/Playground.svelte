@@ -112,22 +112,23 @@
     <Button on:click={e => console.log(e)} value={4}>Click me!</Button>
     <Button on:click={e => console.log(e)} value={5}>Click me!</Button>
   </ButtonRow>
-</div>
-<!-- Tooltip -->
-<h4>Undefined</h4>
-<ToolTip position={'left'}>
-  <span slot="tooltip"><p>Here is a cool tip</p></span>
-  <span slot="content"
-    ><Button on:click={e => console.log(e.target)} value={'Tooltip button'}
-      >Hover me!</Button
-    ></span
-  >
-</ToolTip>
+  <!-- Tooltip -->
+  <h4>Undefined</h4>
+  <ToolTip position={'left'}>
+    <span slot="tooltip"><p>Here is a cool tip that is reasonally long</p></span
+    >
+    <span slot="content"
+      ><Button on:click={e => console.log(e.target)} value={'Tooltip button'}
+        >Hover me!</Button
+      ></span
+    >
+  </ToolTip>
 
-<style>
-  .content {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
-  }
-</style>
+  <style>
+    .content {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+  </style>
+</div>

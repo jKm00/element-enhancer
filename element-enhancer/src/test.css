@@ -12,3 +12,7 @@ And it does :))
   --text-color: red;
   --bg-color: blue;
 } */
+
+body {
+  background-color: #ccc;
+}
