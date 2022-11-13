@@ -4,6 +4,7 @@
   import Button from '@/lib/buttons/Button.svelte';
   import ButtonRow from '@/lib/buttons/ButtonRow.svelte';
   import '@/test.css';
+  import ToolTip from './lib/addons/ToolTip.svelte';
 
   const dropdown = {
     label: 'My dropdown',
@@ -91,8 +92,10 @@
   />
   <!-- Button -->
   <button on:click={e => console.log(e.target)}>Click me!</button>
-  <Button on:click={e => console.log(e.target)} value={'greetings'}
-    >Click me!</Button
+  <Button
+    on:click={e => console.log(e.target)}
+    value={'greetings'}
+    styleOptions={{ textColor: 'white' }}>Click me!</Button
   >
   <!-- Multiple buttons together -->
   <div>
@@ -110,6 +113,16 @@
     <Button on:click={e => console.log(e)} value={5}>Click me!</Button>
   </ButtonRow>
 </div>
+<!-- Tooltip -->
+<h4>Undefined</h4>
+<ToolTip position={'left'}>
+  <span slot="tooltip"><p>Here is a cool tip</p></span>
+  <span slot="content"
+    ><Button on:click={e => console.log(e.target)} value={'Tooltip button'}
+      >Hover me!</Button
+    ></span
+  >
+</ToolTip>
 
 <style>
   .content {

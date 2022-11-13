@@ -186,7 +186,7 @@
   .el-list {
     box-shadow: var(--shadow-x) var(--shadow-y) var(--shadow-blur)
       var(--shadow-offset) var(--shadow-color);
-    background-color: var(--neutral-color);
+    background-color: var(--pop-up-bg);
     padding-block: var(--spacing-y);
 
     display: none;

@@ -169,13 +169,13 @@
   }
 
   .el-label:hover {
-    background-color: var(--bg-color-hover);
     color: var(--text-color-hover);
+    background-color: var(--bg-color-hover);
   }
 
   .el-label:focus-visible {
-    background-color: var(--bg-color-focus);
     color: var(--text-color-focus);
+    background-color: var(--bg-color-focus);
   }
 
   .el-label svg {
@@ -199,7 +199,7 @@
   .el-list {
     box-shadow: var(--shadow-x) var(--shadow-y) var(--shadow-blur)
       var(--shadow-offset) var(--shadow-color);
-    background-color: var(--neutral-color);
+    background-color: var(--pop-up-bg);
     padding-block: var(--spacing-y);
 
     display: none;
@@ -224,18 +224,18 @@
   }
 
   .el-item:hover {
-    background-color: var(--bg-color-hover);
     color: var(--text-color-hover);
+    background-color: var(--bg-color-hover);
   }
 
   .el-item:focus {
-    background-color: var(--bg-color-focus);
     color: var(--text-color-focus);
+    background-color: var(--bg-color-focus);
   }
 
   .el-item[data-checked='true'] {
-    background-color: var(--bg-color-selected);
     color: var(--text-color-selected);
+    background-color: var(--bg-color-selected);
   }
 
   .el-item label {

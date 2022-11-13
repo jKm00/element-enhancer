@@ -21,12 +21,12 @@
 .el {
   /* Colors */
   --theme-color: #5f3dc5;
-  --theme-color-secondary: #e5dbff;
+  --theme-bg-color: #ede6ff;
 
   --theme-text-color: var(--theme-color);
-  --theme-text-color-hover: #fff;
+  --theme-text-color-active: #fff;
 
-  --theme-bg-color: #fff;
+  --theme-pop-up-bg: #fff;
 
   /* Font */
   --theme-font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -52,33 +52,30 @@ Css variables
 All css variables are initialized to default theme
 */
 .el {
-  /* Colors */
+  /* Text color */
   --text-color: var(--theme-color);
-  --text-color-hover: var(--theme-text-color-hover);
-  --text-color-focus: var(--theme-text-color-hover);
-  --text-color-selected: var(--theme-text-color-hover);
+  --text-color-hover: var(--theme-text-color-active);
+  --text-color-focus: var(--theme-text-color-active);
+  --text-color-selected: var(--theme-text-color-active);
 
-  --bg-color: var(--theme-color-secondary);
+  /* Background color */
+  --bg-color: var(--theme-bg-color);
   --bg-color-hover: var(--theme-color);
   --bg-color-focus: var(--theme-color);
   --bg-color-selected: var(--theme-color);
+  /* Pop up container color */
+  --pop-up-bg: var(--theme-pop-up-bg);
 
+  /* Border color */
   --border-color: var(--theme-color);
-  --border-color-hover: var(--theme-color);
-  --border-color-focus: var(--theme-color);
-  --border-color-selected: var(--theme-color);
-  /* TODO: Rename to something more understandebla. Used for dropdown background etc */
-  --neutral-color: var(--theme-bg-color);
+  --border-style: var(--theme-border-style);
+  --border-thickness: var(--theme-border-thickness);
+  --border-rounding: var(--theme-border-rounding);
 
   /* Typography */
   --font-family: var(--theme-font-family);
   --font-size: var(--theme-font-size);
   --font-weight: var(--theme-font-weight);
-
-  /* Border */
-  --border-thickness: var(--theme-border-thickness);
-  --border-style: var(--theme-border-style);
-  --border-rounding: var(--theme-border-rounding);
 
   /* Spacing */
   --spacing-x: var(--theme-spacing-x);
