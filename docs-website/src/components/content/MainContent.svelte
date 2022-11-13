@@ -18,7 +18,6 @@
 		grid-template-columns: 1fr 15rem;
 		gap: 4rem;
 		min-height: 80vh;
-		width: 1200px;
 		margin: 0 auto 5rem auto;
 		padding: 0 2rem;
 	}
@@ -36,6 +35,6 @@
 	}
 
 	.navigation {
-		grid-column: 1 / span 2;
+		grid-column: 1 / span 1;
 	}
 </style>

@@ -4,6 +4,22 @@
 	import ColorShowcase from '@/components/code/ColorShowcase.svelte';
 	import PageNavigation from '@/components/navigation/PageNavigation.svelte';
 	import MainContent from '@/components/content/MainContent.svelte';
+	import PageContent from '@/components/content/PageContent.svelte';
+
+	const pageContent = [
+		{
+			title: 'Custom styling',
+			path: '#custom-styling',
+		},
+		{
+			title: 'Global styles',
+			path: '#global-styles',
+		},
+		{
+			title: 'Styles for individual component',
+			path: '#individual-component-styles',
+		},
+	];
 </script>
 
 <!-- 
@@ -106,6 +122,7 @@ TODO: Rewrite global styles configuration
 </svelte:head>
 
 <MainContent>
+	<PageContent slot="content-list" content={pageContent} />
 	<section slot="content" class="section" id="custom-styling">
 		<h1 class="title title--main">Custom styling</h1>
 		<p class="text">
@@ -118,9 +135,20 @@ TODO: Rewrite global styles configuration
 			<li>Globally</li>
 			<li>Individually for each component</li>
 		</ul>
+		<h2 class="title title--secondary" id="global-styles">Global styles</h2>
 		<p class="text">
-			Lets talk about the global styles first as this is the most common way of
-			customizing your elements.
+			We're conna talk more about global styles in the next chapter and explain
+			how and why. But for now, global styles let's you configure your theme
+			once and it will be reflected on all the elements from element-enhancer.
+		</p>
+		<h2 class="title title--secondary" id="individual-component-styles">
+			Styles for individual component
+		</h2>
+		<p class="text">
+			This is also a subject documented more later in the docs. But for now,
+			this let's you configure the style of a specific component. Used when you
+			want a component that should look at little bit different from the rest of
+			the theme.
 		</p>
 	</section>
 	<PageNavigation

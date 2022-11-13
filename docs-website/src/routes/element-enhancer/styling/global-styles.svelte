@@ -137,7 +137,7 @@
 			<tr class="table-row table-row--heading">
 				<th>Variable</th>
 				<th>Description</th>
-				<th>Default value</th>
+				<th>Default</th>
 				<th>Example</th>
 			</tr>
 			<tr class="table-row">
@@ -342,7 +342,7 @@
 			<tr class="table-row table-row--heading">
 				<th>Variable</th>
 				<th>Description</th>
-				<th>Default value</th>
+				<th>Default</th>
 				<th>Example</th>
 			</tr>
 			<tr class="table-row">

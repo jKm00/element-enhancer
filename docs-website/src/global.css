@@ -63,7 +63,7 @@ img {
 	/* Light theme colors */
 	--clr-text-light: #262626;
 	--clr-link-light: #5e3cc3;
-	--clr-bg-light: #d9d9d9;
+	--clr-bg-light: #f7f7f7;
 	--clr-card-bg-light: #f2f2f2;
 	--clr-inline-code-bg-light: #fff;
 	--clr-gradient-bg-light: #f2f2f2;
@@ -119,6 +119,10 @@ svg {
 
 .text--small {
 	line-height: 1.5rem;
+}
+
+.bold {
+	font-weight: bold;
 }
 
 .inline-list {
