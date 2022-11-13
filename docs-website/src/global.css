@@ -123,8 +123,12 @@ svg {
 	margin-left: 1rem;
 }
 
-.inline-list li:not(:last-child) {
+.inline-list:not(.inline-list--compact) li:not(:last-child) {
 	margin-bottom: 1rem;
+}
+
+.inline-list--compact {
+	margin-bottom: 0;
 }
 
 .logo {
@@ -134,14 +138,13 @@ svg {
 	font-weight: bold;
 }
 
-.section:not(:first-child) {
-	padding-top: 6rem;
+.section > .title {
+	padding-top: 5rem;
 }
 
 .section > *:not(:last-child) {
 	margin-bottom: 2rem;
 }
-
 /* Scrollbar */
 ::-webkit-scrollbar {
 	width: 15px;
@@ -225,11 +228,6 @@ svg {
 .table-row td {
 	max-width: 20rem;
 	padding-bottom: 1rem;
-}
-
-.text-list {
-	list-style: inside;
-	margin-left: 1rem;
 }
 
 .flex {

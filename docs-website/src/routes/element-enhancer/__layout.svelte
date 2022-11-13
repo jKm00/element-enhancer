@@ -13,21 +13,11 @@
 			subItems: [
 				{
 					label: 'Custom styling',
-					link: '/element-enhancer/custom-styling',
+					link: '/element-enhancer/custom-styling#custom-styling',
 				},
 				{
 					label: 'Global styles',
 					link: '/element-enhancer/custom-styling#global-styles',
-					subItems: [
-						{
-							label: 'Color theme',
-							link: '/element-enhancer/custom-styling#color-theme',
-						},
-						{
-							label: 'More specific themes',
-							link: '/element-enhancer/custom-styling#more-specific-themes',
-						},
-					],
 				},
 				{
 					label: 'Component styling',
@@ -176,7 +166,7 @@
 	.main {
 		min-height: 200vh;
 		max-width: 120ch;
-		margin: 5rem auto;
+		margin: 0 auto 5rem auto;
 		padding: 0 2rem;
 	}
 </style>

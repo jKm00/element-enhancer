@@ -4,32 +4,41 @@
   the content of a file should go between the tags
 -->
 <script lang="ts">
-  export let path: string;
+	export let alt: string;
+	export let path: string;
 </script>
 
+<p class="alt-text">{alt}</p>
 <article class="code card">
-  <p class="code__path">{path}</p>
-    <code class="code__content">
-      <pre>
+	<p class="code__path">{path}</p>
+	<code class="code__content">
+		<pre>
         <slot />
       </pre>
-    </code>
+	</code>
 </article>
 
 <style>
-  .code {
-    position: relative;
-  }
+	.alt-text {
+		margin: 0;
+		margin-bottom: 0.5rem;
+		padding: 0;
+		font-style: italic;
+	}
 
-  .code__path {
-    font-size: 0.8rem;
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-  }
+	.code {
+		position: relative;
+	}
 
-  .code__content {
-    display: block;
-    font-size: 1rem;
-  }
+	.code__path {
+		font-size: 0.8rem;
+		position: absolute;
+		top: 1rem;
+		right: 1rem;
+	}
+
+	.code__content {
+		display: block;
+		font-size: 1rem;
+	}
 </style>
