@@ -1,10 +1,14 @@
 <script lang="ts">
-	import NavItem from '@/components/NavItem.svelte';
+	import NavItem from '@/components/navigation/NavItem.svelte';
 	import ThemeToggle from '@/components/ThemeToggle.svelte';
 
 	const navItems = [
 		{
-			label: 'Getting Started',
+			label: 'Introduction',
+			link: '/element-enhancer/introduction',
+		},
+		{
+			label: 'Getting started',
 			link: '/element-enhancer/getting-started',
 		},
 		{
@@ -12,16 +16,16 @@
 			link: '/element-enhancer/custom-styling',
 			subItems: [
 				{
-					label: 'Custom styling',
-					link: '/element-enhancer/custom-styling#custom-styling',
+					label: 'Custom styles',
+					link: '/element-enhancer/styling',
 				},
 				{
 					label: 'Global styles',
-					link: '/element-enhancer/custom-styling#global-styles',
+					link: '/element-enhancer/styling/global-styles',
 				},
 				{
-					label: 'Component styling',
-					link: '/element-enhancer/custom-styling#component-styles',
+					label: 'Component styles',
+					link: '/element-enhancer/styling/component-styles',
 				},
 			],
 		},
@@ -30,7 +34,11 @@
 			link: '/element-enhancer/elements',
 			subItems: [
 				{
-					label: 'Dropdown',
+					label: 'About elements',
+					link: '/element-enhancer/elements',
+				},
+				{
+					label: 'Dropdowns',
 					link: '/element-enhancer/elements/dropdown',
 				},
 			],
@@ -64,7 +72,7 @@
 	</form>
 	<ThemeToggle />
 </header>
-<!-- Main co"mponentes -->
+<!-- Main coomponentes -->
 <div class="page">
 	<!-- Nav side bar -->
 	<nav class="nav">
@@ -75,9 +83,7 @@
 		</ul>
 	</nav>
 	<!-- Main docs -->
-	<main class="main">
-		<slot />
-	</main>
+	<slot />
 </div>
 
 <style>
@@ -160,13 +166,5 @@
 		background-color: var(--clr-card-bg);
 		padding: 1rem;
 		box-shadow: 1px 10px 10px rgba(0, 0, 0, 0.1);
-	}
-
-	/* Main content */
-	.main {
-		min-height: 200vh;
-		max-width: 120ch;
-		margin: 0 auto 5rem auto;
-		padding: 0 2rem;
 	}
 </style>

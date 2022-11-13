@@ -60,7 +60,7 @@ img {
 
 	/* Light theme colors */
 	--clr-text-light: #262626;
-	--clr-bg-light: #e6e6e6;
+	--clr-bg-light: #d9d9d9;
 	--clr-card-bg-light: #f2f2f2;
 	--clr-inline-code-bg-light: #fff;
 	--clr-gradient-bg-light: #f2f2f2;
@@ -270,4 +270,19 @@ body {
 	transition: background-color var(--animation-duration)
 			var(--animation-function),
 		color var(--animation-duration) var(--animation-function);
+}
+
+/* Turn of animation for reduced motion users */
+@media (prefers-reduced-motion) {
+	* {
+		transition: none;
+	}
+
+	*::before {
+		transition: none;
+	}
+
+	*::after {
+		transition: none;
+	}
 }
